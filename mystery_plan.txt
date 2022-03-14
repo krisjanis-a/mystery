@@ -1,0 +1,162 @@
+
+Plan
+
+---
+
+TODOs:
+
+- Create listening history page
+    Tasks:
+    - authenticate user's last.fm account
+    - get user's listening history
+    - display history in table on page
+
+---
+
+The aim / goals of the application:
+
+    Create a personalized library / collection of user's favourite music and artists
+
+    Collect listening data from user's linked Spotify or Last.fm account
+
+    Make it more lightweight / simple than last.fm
+
+    Analyze listening habits and suggest similar artists to current preferences
+
+    Suggest new music based on favourite artists
+
+    Additional features:
+
+        - create must listen / suggestion playlists / collections / lists of music / artists and share with friends
+
+        - create playlists which maybe could be uploaded to Spotify
+
+        - comments / chat feature
+
+    Take music from spotify liked tracks / playlists and organize by genre / date of release / listen counts
+
+---
+
+APIs to use:
+
+    - Spotify
+    - Last.fm
+
+---
+
+Inspirations:
+
+    OrganizeYourMusic (uses Spotify API)
+
+---
+
+App flow / routes:
+
+Home
+
+Login
+
+Register
+
+Profile settings
+
+Artist display page
+
+Album display page
+
+Playlist display page
+
+Collections display page
+
+Create playlist / collection page
+
+Followers / Following page
+
+
+When user comes to the webpage he starts at welcome page. 
+User has two options: register/login or continue as guest.
+If continuing as guest user can view home page, artists, albums and other user profiles.
+
+--- 
+
+Tasks:
+
+    - Plan out everything that needs to be done
+
+    - Create front-end views for all pages
+        - Components:
+            - Navbar
+            - Searchbar
+            - Spotify player
+
+        - Pages:
+            - Welcome page
+            - Home page
+            - Artist display page
+            - Album display page
+            - Songs list page
+            - Playlist display page
+            - Settings page
+            - Collections display page
+            - Colletion creation page
+    
+    - Create routing for pages
+
+    - User authentication
+    - Guest view of application
+
+    - Connect spotify API to app
+    - Get data from spotify API
+
+    - Connects last.fm API to app
+    - Get data from spotify API
+
+    - Connect user account to facebook account
+    - Connect user account to last.fm account
+    - Connect user account to spotify account
+
+    - Create database for app
+    - Create database structure
+    - Store data from app to database
+
+    - Integrate React / Vue & Components
+    - Understand how to continiously integrate spotify player
+    - How to preserve component states when navigating through pages / routes
+
+---
+
+Data structures / database
+
+User
+├ username
+├ password
+├ name
+├ surname
+├ created / joined date
+├ date of birth (optional)
+├ country (optional)
+├ artists
+├ albums
+├ songs
+├ collections (created in mystery, not spotify)
+│ └ songs
+├ followers
+├ following
+└ profile image
+
+---
+
+Tree line characters
+ 
+─ │ ├ ┤ ┴ ┬ ┼ └ ┘ ┐ ┌
+
+
+---
+
+Picture links:
+
+https://mocah.org/4594270-artwork-fantasy-art-concept-art-sky-galaxy-space-digital-art-space-art-planet.html
+https://mocah.org/4593968-artwork-fantasy-art-concept-art-science-fiction-planet-nebula-sky-stars.html#hello
+https://www.wallpaperflare.com/saturn-planet-artwork-space-digital-art-concept-art-wallpaper-197278
+https://wallhere.com/en/wallpaper/242373
+https://adwallpapers.xyz/211253-planet-space-futuristic-artwork-earth-science-fiction-concept-art-map-atmosphere-universe-darkness-s.html

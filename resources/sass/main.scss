@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Zen+Dots&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+// Custom color scheme
+$background-dark-blue: #000b15;
+$light-grey-1: #c4c4c4;
+$light-grey-2: #e5e5e5;
+$medium-grey-1: #6d6d6d;
+$gold-1: #9f8d69;
+$gold-2: #8a7141;
+
+* {
+    margin: 0;
+    width: 100%;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+button {
+    width: fit-content;
+}
+
+// Navbar
+
+.navbar {
+    background-color: $background-dark-blue;
+
+    // Navbar left side
+    .navbar-left {
+        width: fit-content;
+    }
+
+    .navigation-menu {
+        position: relative;
+        width: fit-content;
+    }
+
+    // Menu dropdown
+    .menu-toggle {
+        width: fit-content;
+    }
+    #navigation-menu-dropdown-button {
+        width: 2rem;
+        background: none;
+        font-size: 1.5rem;
+        color: #8a7141;
+    }
+
+    .navigation-menu-dropdown {
+        padding: 0.5rem;
+        position: absolute;
+        left: 0;
+        width: fit-content;
+        background-color: $background-dark-blue;
+        border: 1px solid $medium-grey-1;
+
+        a {
+            text-decoration: none;
+            color: $light-grey-1;
+        }
+
+        a:hover {
+            // font-weight: bold;
+            text-shadow: 0px 0px 1px $light-grey-1;
+        }
+    }
+
+    // Navbar search bar
+    .navbar-search-bar {
+        background-color: $light-grey-1;
+        width: 10rem;
+        height: fit-content;
+        border-radius: 1rem;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .navbar-search-button {
+        color: $light-grey-1;
+        width: fit-content;
+        padding: 0 0.5rem;
+        border: none;
+        background: none;
+    }
+
+    .navbar-search-button:hover {
+        text-shadow: #fff;
+    }
+
+    // Navbar brand name
+    .navbar-app-name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: $light-grey-1;
+        width: fit-content;
+    }
+
+    .navbar-brand {
+        color: $light-grey-1;
+        margin: auto;
+    }
+
+    .navbar-brand:hover {
+        color: $light-grey-1;
+        // font-weight: bold;
+        text-shadow: 0px 0px 1px $light-grey-1;
+    }
+
+    // Navbar right side
+
+    .navbar-right {
+        width: fit-content;
+    }
+
+    .navbar-user {
+        .nav-item {
+            padding: 0.5rem;
+        }
+        .nav-link {
+            padding: 0;
+            color: $light-grey-1;
+        }
+
+        .nav-link:hover {
+            color: $light-grey-1;
+            // font-weight: bold;
+            text-shadow: 0px 0px 1px $light-grey-1;
+        }
+    }
+
+    .navbar-user-dropdown {
+        position: absolute;
+        background-color: $background-dark-blue;
+        border: 1px solid $medium-grey-1;
+
+        .dropdown-item,
+        .dropdown-item:hover {
+            background-color: $background-dark-blue;
+            color: $light-grey-1;
+        }
+
+        .dropdown-item:hover {
+            // font-weight: bold;
+            text-shadow: 0px 0px 1px $light-grey-1;
+        }
+    }
+
+    .navbar-user-image {
+        margin: 0 0.5rem;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+// Welcome section button colors
+$login-btn-blue-fill: #104150;
+$login-btn-blue-stroke: #005e77;
+$register-btn-blue-fill: #082027;
+$register-btn-blue-stroke: #2f515a;
+
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    background-color: $background-dark-blue;
+    min-height: 100vh;
+
+    // Buttons & links
+    .welcome-button {
+        width: 8rem;
+        border-radius: 0.85rem;
+        padding: 0.25rem 0.25rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $light-grey-2;
+    }
+
+    .welcome-button-link {
+        width: fit-content;
+        margin: 0 0.5rem;
+        text-decoration: none;
+    }
+
+    .welcome-button:hover {
+        filter: brightness(110%);
+    }
+
+    .welcome-login-button {
+        background-color: $login-btn-blue-fill;
+        border: 2px solid $login-btn-blue-stroke;
+    }
+
+    .welcome-register-button {
+        background-color: $register-btn-blue-fill;
+        border: 2px solid $register-btn-blue-stroke;
+    }
+
+    .continue-as-guest-link,
+    .continue-to-site {
+        width: fit-content;
+        font-size: 0.75rem;
+        margin: 0 0.5rem;
+    }
+
+    .continue-as-guest-link:hover,
+    .continue-to-site:hover {
+        // font-weight: 500;
+        text-shadow: 0px 0px 1px $gold-1;
+    }
+
+    h1 {
+        font-family: "Zen Dots", cursive;
+        color: white;
+        font-size: 3.5rem;
+        font-weight: 600;
+        letter-spacing: 0.25rem;
+
+        padding-bottom: 1.5rem;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: $background-dark-blue;
+    }
+
+    h3 {
+        color: $gold-1;
+        font-size: 1.5rem;
+        font-weight: 300;
+    }
+
+    h4 {
+        color: $light-grey-2;
+    }
+
+    .content {
+        position: absolute;
+    }
+
+    .titles {
+        display: flex;
+        flex-direction: column;
+
+        padding: 1rem 0;
+        padding-left: 3rem;
+    }
+
+    .actions {
+        padding: 1rem 0;
+        padding-left: 3rem;
+
+        a {
+            color: $gold-1;
+        }
+    }
+
+    .welcome-username {
+        font-style: italic;
+    }
+
+    .background-image {
+        img {
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .affiliates {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+
+        width: fit-content;
+        white-space: nowrap;
+
+        color: white;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .affiliates-text {
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        .affiliate-icon {
+            font-size: 1.5rem;
+            padding-left: 0.5rem;
+        }
+    }
+}
+
+// Home
+
+.home {
+    .carousel-item {
+        img {
+            object-fit: contain;
+        }
+    }
+}

@@ -18,9 +18,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'name',
+        'surname',
+        'birthdate',
+        'country',
+        'artists',
+        'albums',
+        'songs',
+        'collections',
+        'followers',
+        'following',
+        'profile_image',
+        'lastfm_username',
+        'lastfm_session_key'
     ];
 
     /**

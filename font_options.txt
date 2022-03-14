@@ -1,0 +1,305 @@
+Alata
+Alatsi
+Aldrich
+Alegreya SC
+Allerta
+Allerta Stencil
+Alumni Sans
+AmstelvarAlpha
+Antic
+Antic Didone
+Aoboshi One
+Arapey
+Audiowide
+
+Bai Jamjuree
+Ballet
+Balthazar
+Barlow
+Barlow Condensed
+Baskervville
+Bellefair
+Belleza
+Bellota Text
+Benne
+Bentham
+Black Ops One
+Bona Nova
+Bruno Ace
+Bruno Ace SC
+Brygada 1918
+Bungee Hairline
+Bungee Outline
+
+Chakra Petch
+Chathura
+Chenla
+Cherish
+Cinzel
+Cinzel Decorative
+Codystar
+Comfortaa
+Comic Neue
+Commissioner
+Content
+Cormorant Garamond
+Cormorant Infant
+Cormorant SC
+Cormorant Unicase
+Crimson Text
+Cutive Mono
+
+Darker Grotesque
+David Libre
+Didact Gothic
+Digital Numbers
+Dongle
+Dorsa
+Dosis
+Droid Sans
+Duru Sans
+
+Eagle Lake
+EB Garamond
+Economica
+Eczar
+El Messiri
+Electrolize
+Encode Sans SC
+Estonia
+Exo
+Exo 2
+Expletus Sans
+
+Fahkwang
+Fanwood Text
+Faustina
+Federo
+Fenix
+Fjord
+Flamenco
+Fondamento
+Font Awesome 5 Brands
+Forum
+Frank Ruhl Libre
+Fraunces
+
+Gayathri
+Gelasio
+Gemunu Libre
+Genos
+Geostar Fill
+GFS Didot
+Gilda Display
+Goldman
+Gothic A1
+Gowun Batang
+Graduate
+Gruppo
+
+Halant
+HeadlandOne
+Heebo
+Hepta Slab
+Hermeneus One
+Hina Mincho
+
+Ibarra Real Nova
+Iceland
+Imbue
+Inconsolata
+Inria Serif
+
+Jaldi
+JejuMyeongjo
+Josefin Sans
+Jost
+Judson
+Julius Sans One
+Junge
+Jura
+
+K2D
+Kadwa
+Kaisei Decol
+Kameron
+Kantumruy
+Kapakana
+Karantina
+Karla
+Karma
+Khand
+Khula
+Koh Santepheap
+KoHo
+Kokoro
+KoPub Batang
+Kumbh Sans
+
+Lancelot
+Lao Muang Don
+Lateef
+Lato
+Ledger
+Lexend
+Lexend Exa
+Lexend Giga
+Lexend Zetta
+Libre Caslon Text
+Livvic
+Lora
+Lustria
+
+Mada
+Maitree
+Major Mono Display
+Mallanna
+Manrope
+Manuale
+Marcellus
+Marcellus SC
+Mate SC
+Metal Mania
+Metrophobic
+Michroma
+Mirza
+Mitr
+Monda
+Montaga
+Montserrat
+Mukta
+Mulish
+
+NanumMyeongjo
+News Cycle
+Nixie One
+
+Open Sans
+Open Sans Hebrew
+Orbitron
+Oswald
+Outfit
+Overlock
+Overlock SC
+Ovo
+Oxanium
+Oxygen
+
+Peddana
+Phetsarath
+Philosopher
+Piazzolla
+Play
+Playfair Display
+Playfair Display SC
+Poiret One
+Poppins
+Porter Sans Block
+Post No Bills Colombo
+Prata
+Prociono
+Prompt
+Prosto One
+Proza Libre
+PT Mono
+PT Sans
+PT Serif
+Public Sans
+Puritan
+
+Quantico
+Quattrocento
+Quattrocento Sans
+Questrial
+Quicksand
+
+Radley
+Rajdhani
+Raleway
+Rasa
+Rationale
+Readex Pro
+Red Hat Display
+Red Hat Mono
+Red Hat Text
+Red Rose
+Reem Kufi
+Rhodium Libre
+Roboto
+Roboto Condensed
+Roboto Mono
+RobotoFlex
+Rokkitt
+Rosario
+Rosarivo
+Rubik
+
+Sahitya
+Saira
+Saira Condensed
+Sansation
+Sansation Light
+Sarpanch
+Sawarabi Gothic
+Sawarabi Mincho
+Scheherazade
+Scheherazade New
+Scope One
+Sedan
+Sedan SC
+Sen
+Shippori Mincho
+Siemreap
+Simonetta
+SirinStencil
+Smythe
+Spartan
+Spectral
+Spectral SC
+Spinnaker
+Sree Krushnadevaraya
+Stardos Stencil
+Stick No Bills
+Stint Ultra Expanded
+Sulphur Point
+Sura
+Suranna
+Syncopate
+Syne
+Syne Mono
+
+Tajawal
+Tangerine
+Tauri
+Taviraj
+Teko
+Telex
+Tenali Ramakrishna
+Tenor Sans
+Text Me One
+Thasadith
+Tinos
+Tomorrow
+Trirong
+Tulpen One
+Turret Road
+
+Ubuntu
+Uncial Antiqua
+Unna
+Urbanist
+
+Varela
+Varta
+Vollkorn SC
+Voltaire
+
+Wallpoet
+Wire One
+Work Sans
+
+Yusei Magic
+
+Zen Dots
+Zen Tokyo Zoo
+Zilla Slab
