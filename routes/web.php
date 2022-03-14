@@ -63,6 +63,11 @@ Route::get('/settings/disconnect-lastfm-account', [SettingsController::class, 'd
 
 Route::get('/settings/lastfm-session', [SettingsController::class, 'lastfmSession']);
 
+
+/* 
+    Authentication routing
+*/
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

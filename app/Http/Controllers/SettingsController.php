@@ -61,11 +61,18 @@ class SettingsController extends Controller
         // Response from string to JSON
         $response = json_decode($resp);
         // dd($response);
+        
+        // Very sophisticated error handling...
+        if(property_exists($response, 'error'))
+        {
+            return dd($response);
+        }
 
         // Received data retrieval
         $lastfm_username = $response->session->name;
         $lastfm_session_key = $response->session->key;
         $user_id = Auth::user()->id;
+
 
         // Add response data to database
         DB::update('update users set lastfm_username = ?, lastfm_session_key = ? where id = ?', [$lastfm_username, $lastfm_session_key, $user_id]);
