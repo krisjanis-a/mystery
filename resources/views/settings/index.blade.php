@@ -26,6 +26,7 @@
                 <span id="email">{{ Auth::user()->email }}</span>
             </div>
             
+            {{-- Connect last.fm account --}}
             @if (Auth::user()->lastfm_session_key)
             <div class="user-information-field d-flex flex-row">
                 <label for="lastfm-username">last.fm username:</label>
@@ -39,11 +40,27 @@
             </a>
 
             @else
-            <a href="http://www.last.fm/api/auth/?api_key={{ env('LASTFM_API_KEY') }}&cb=http://localhost:8000/settings/create-lastfm-session">
+            <a href="/settings/request-lastfm-authorization">
                 <button>
                     Connect to last.fm
                 </button>
             </a>
+            @endif
+            
+            {{-- Connect Spotify account --}}
+            @if (Auth::user()->spotify_access_token)
+            <a href="/settings/spotify-session">
+                <button>
+                    View Spotify account details
+                </button>
+            </a>
+
+            @else
+                <a href="/settings/request-spotify-authorization">
+                    <button>
+                        Connect to Spotify account
+                    </button>
+                </a>
             @endif
         </div>   
 

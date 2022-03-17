@@ -49,7 +49,7 @@ Route::get('/listening-history', function(){
 
 Route::get('/profile', function(){
     return view('profile');
-});
+})->middleware('auth');
 
 /* 
     Settings routing
@@ -57,12 +57,21 @@ Route::get('/profile', function(){
 
 Route::get('/settings', [SettingsController::class, 'index']);
 
+// last.fm routes
+Route::get('/settings/lastfm-session', [SettingsController::class, 'lastfmSession']);
+
+Route::get('/settings/request-lastfm-authorization', [SettingsController::class, 'requestLastfmAuthorization']);
+
 Route::get('/settings/create-lastfm-session', [SettingsController::class, 'createLastfmSession']);
 
 Route::get('/settings/disconnect-lastfm-account', [SettingsController::class, 'disconnectLastfmAccount']);
 
-Route::get('/settings/lastfm-session', [SettingsController::class, 'lastfmSession']);
+// Spotify routes
+Route::get('/settings/spotify-session', [SettingsController::class, 'spotifySession']);
 
+Route::get('/settings/request-spotify-authorization', [SettingsController::class, 'requestSpotifyAuthorization']);
+
+Route::get('/settings/connect-spotify-account', [SettingsController::class, 'connectSpotifyAccount']);
 
 /* 
     Authentication routing
@@ -70,4 +79,7 @@ Route::get('/settings/lastfm-session', [SettingsController::class, 'lastfmSessio
 
 Auth::routes();
 
+/* 
+    Home routing
+*/
 Route::get('/home', [HomeController::class, 'index'])->name('home');
