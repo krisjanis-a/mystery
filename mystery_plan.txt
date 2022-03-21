@@ -5,9 +5,40 @@ Plan
 
 TODOs:
 
+- Home page
+    - show suggested artists
+    - 
+
+- Settings page
+    - upload image & save to database
+    - edit user information fields
+    - 
+    
+- 
+
+- Overall tasks
+    - login, register, forgot password pages -> fix styling to mystery app design
+
+Stuff to learn / implement
+
+    - Connect user account to facebook account
+
+    - Integrate React / Vue & Components
+    - Understand how to continiously integrate spotify player
+    - How to preserve component states when navigating through pages / routes
+
 ---
 
-The aim / goals of the application:
+Primary goals / functions for application
+
+1. Load a playlist from spotify -> sort / filter music by genre, artist, album, year etc.
+2. Create new playlists / collections and add to spotify playlists
+3. Get suggested artists from recently listened artists
+4. Find unpopular artists
+
+---
+
+The ideas for the application:
 
     Create a personalized library / collection of user's favourite music and artists
 
@@ -41,52 +72,6 @@ APIs to use:
 Inspirations:
 
     OrganizeYourMusic (uses Spotify API)
-
----
-
-App flow / routes:
-
-Home
-
-Login
-
-Register
-
-Profile settings
-
-Artist display page
-
-Album display page
-
-Playlist display page
-
-Collections display page
-
-Create playlist / collection page
-
-Followers / Following page
-
---- 
-
-    
-    - Create routing for pages
-
-    - User authentication
-    - Guest view of application
-
-    - Connect spotify API to app
-    - Get data from spotify API
-
-    - Connects last.fm API to app
-    - Get data from spotify API
-
-    - Connect user account to facebook account
-    - Connect user account to last.fm account
-    - Connect user account to spotify account
-
-    - Integrate React / Vue & Components
-    - Understand how to continiously integrate spotify player
-    - How to preserve component states when navigating through pages / routes
 
 ---
 

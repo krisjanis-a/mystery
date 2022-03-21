@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use LastFmApi\Api\ArtistApi;
 use LastFmApi\Api\AuthApi;
-use SpotifyWebAPI\SpotifyWebAPI;
 
 require __DIR__.'/../../Utils/createSpotifyApiInstance.php';
 
@@ -31,7 +30,8 @@ class ArtistController extends Controller
         // Get most popular result
         foreach($artistSearch as $artist)
         {
-            if($artist->name === $artistDataLastfm['name'])
+            if(strcasecmp($artist->name, $artistDataLastfm['name']) === 0) // Case insensitive comparison
+            // if($artist->name === $artistDataLastfm['name'])
             {
                 array_push($popularities, $artist->popularity);
             };
@@ -41,7 +41,7 @@ class ArtistController extends Controller
 
         foreach($artistSearch as $artist)
         {
-            if($artist->popularity === $maxPopularity && $artist->name === $artistDataLastfm['name'])
+            if($artist->popularity === $maxPopularity && strcasecmp($artist->name, $artistDataLastfm['name']) === 0)
             {
                 $artistId = $artist->id;
             };

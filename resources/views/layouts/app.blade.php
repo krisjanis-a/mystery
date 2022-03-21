@@ -28,9 +28,10 @@
 <body class="antialiased">
     <div id="app">
         <x-navbar/>
-        <main>
+        <main class="content-wrapper">
             @yield('content')
         </main>
+        <x-footer/>
     </div>
 </body>
 </html>
