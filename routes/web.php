@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -18,18 +21,25 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+/* 
+    Welcome screen
+*/
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+/* 
+    Artist routing
+*/
 
-Route::get('/artist', function(){
-    return view('artist');
-});
+Route::get('/artist/{name}',[ArtistController::class, 'showArtist']);
 
 Route::get('/album', function(){
     return view('album');
 });
+
+Route::get('/song/{name}', [SongController::class, 'showSong']);
 
 Route::get('/collections', function(){
     return view('collections');
@@ -47,9 +57,11 @@ Route::get('/listening-history', function(){
     return view('listening-history');
 });
 
-Route::get('/profile', function(){
-    return view('profile');
-})->middleware('auth');
+/* 
+    Profile routing
+*/
+
+Route::get('/profile', [ProfileController::class, 'index']);
 
 /* 
     Settings routing

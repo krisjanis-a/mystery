@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d3c28160ed5c971e0a8184e3ee83e2f",
+    "content-hash": "079d886356519a59e5a410ea1158e155",
     "packages": [
         {
             "name": "brick/math",
@@ -973,6 +973,56 @@
             "time": "2021-10-06T17:43:30+00:00"
         },
         {
+            "name": "jwilsson/spotify-web-api-php",
+            "version": "5.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jwilsson/spotify-web-api-php.git",
+                "reference": "4ec7242fbaaf2df382d1545f169e8ef8ad7b2006"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jwilsson/spotify-web-api-php/zipball/4ec7242fbaaf2df382d1545f169e8ef8ad7b2006",
+                "reference": "4ec7242fbaaf2df382d1545f169e8ef8ad7b2006",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": "^7.3 || ^8.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.5",
+                "phpunit/phpunit": "^9.4",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SpotifyWebAPI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Wilsson",
+                    "email": "jonathan.wilsson@gmail.com"
+                }
+            ],
+            "description": "A PHP wrapper for Spotify's Web API.",
+            "homepage": "https://github.com/jwilsson/spotify-web-api-php",
+            "keywords": [
+                "spotify"
+            ],
+            "support": {
+                "issues": "https://github.com/jwilsson/spotify-web-api-php/issues",
+                "source": "https://github.com/jwilsson/spotify-web-api-php/tree/5.0.3"
+            },
+            "time": "2022-01-15T12:55:35+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v9.1.0",
             "source": {
@@ -1732,6 +1782,62 @@
                 }
             ],
             "time": "2021-11-21T11:48:40+00:00"
+        },
+        {
+            "name": "matto1990/lastfm-api",
+            "version": "v1.6.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matt-oakes/PHP-Last.fm-API.git",
+                "reference": "6a3125d53f5debf44dd32e41f8da49177483424b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matt-oakes/PHP-Last.fm-API/zipball/6a3125d53f5debf44dd32e41f8da49177483424b",
+                "reference": "6a3125d53f5debf44dd32e41f8da49177483424b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "php": ">=5.3.3",
+                "phpunit/phpunit": "7.4.0",
+                "vlucas/phpdotenv": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tests\\": "tests",
+                    "LastFmApi\\": "src/lastfmapi/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marcos",
+                    "email": "devilcius@gmail.com"
+                },
+                {
+                    "name": "Matt",
+                    "email": "matt@oakes.ws"
+                }
+            ],
+            "description": "Last.fm webservice client",
+            "homepage": "https://github.com/matto1990/PHP-Last.fm-API",
+            "keywords": [
+                "api",
+                "last.fm",
+                "webservice client"
+            ],
+            "support": {
+                "issues": "https://github.com/matt-oakes/PHP-Last.fm-API/issues",
+                "source": "https://github.com/matt-oakes/PHP-Last.fm-API/tree/v1.6.4"
+            },
+            "time": "2019-06-14T07:38:04+00:00"
         },
         {
             "name": "monolog/monolog",

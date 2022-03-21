@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="home d-flex justify-content-center">
+  <h1>Home</h1>
+{{-- <div class="home d-flex justify-content-center">
   <div class="artist-suggestions-container">
     <div class="artist-sugestions-carousel">
       <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -32,5 +33,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 @endsection

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use SpotifyWebAPI\Session;
+use SpotifyWebAPI\SpotifyWebAPI;
+use SpotifyWebAPI\SpotifyWebAPIException;
 
 class SettingsController extends Controller
 {
@@ -114,28 +117,31 @@ class SettingsController extends Controller
     /* Spotify settings */
     public function spotifySession (Request $request)
     {
-        $url = env('SPOTIFY_API_ENDPOINT').'me';
-        $curl = curl_init($url);
-        $headers = array(
-            'Authorization: Bearer '.Auth::user()->spotify_access_token,
-            'Content-Type: application/json'
-        );
+        // Create API instance
+        $session = new Session(env('SPOTIFY_CLIENT_ID'), env('SPOTIFY_CLIENT_SECRET'));
+        $session->setAccessToken(Auth::user()->spotify_access_token);
+        $session->setRefreshToken(Auth::user()->spotify_refresh_token);
 
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $options = [
+            'auto_refresh' => true,
+        ];
+
+        $spotifyAPI = new SpotifyWebAPI($options, $session);
+
+        $response = $spotifyAPI->me();
         
-        //for debug only!
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        
-        $resp = curl_exec($curl);
-        curl_close($curl);
-
-        $response = json_decode($resp);
-
         $userID = $response->id;
+        $username = $response->display_name;
+        $accessToken = $session->getAccessToken();
+
+        if(Auth::user()->spotify_access_token !== $accessToken){
+            DB::update('update users set spotify_access_token = ? where id = ?', [$accessToken, Auth::user()->id]);
+        }
         
-        return view('settings.spotifysession', ['userID' => $userID]);
+        return view('settings.spotifysession', [
+            'username' => $username, 
+            'userID' => $userID,
+        ]);
     }
 
     public function requestSpotifyAuthorization (Request $request)

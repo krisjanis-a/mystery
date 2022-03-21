@@ -23,7 +23,9 @@ button {
     width: fit-content;
 }
 
-// Navbar
+/* 
+    Navbar
+*/
 
 .navbar {
     background-color: $background-dark-blue;
@@ -158,6 +160,10 @@ button {
         object-fit: cover;
     }
 }
+
+/* 
+    Welcome screen
+*/
 
 // Welcome section button colors
 $login-btn-blue-fill: #104150;
@@ -302,12 +308,42 @@ $register-btn-blue-stroke: #2f515a;
     }
 }
 
-// Home
+/*
+    Home
+*/
 
 .home {
     .carousel-item {
         img {
             object-fit: contain;
         }
+    }
+}
+
+/* 
+    Profile
+*/
+.profile {
+    .recent-tracks {
+        .recent-tracks-single {
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+            i {
+                width: fit-content;
+                position: absolute;
+                right: 2rem;
+            }
+        }
+    }
+}
+
+/* 
+    Artist
+*/
+.artist {
+    img {
+        width: 15rem;
     }
 }

@@ -5,12 +5,6 @@ Plan
 
 TODOs:
 
-- Create listening history page
-    Tasks:
-    - authenticate user's last.fm account
-    - get user's listening history
-    - display history in table on page
-
 ---
 
 The aim / goals of the application:
@@ -72,33 +66,8 @@ Create playlist / collection page
 
 Followers / Following page
 
-
-When user comes to the webpage he starts at welcome page. 
-User has two options: register/login or continue as guest.
-If continuing as guest user can view home page, artists, albums and other user profiles.
-
 --- 
 
-Tasks:
-
-    - Plan out everything that needs to be done
-
-    - Create front-end views for all pages
-        - Components:
-            - Navbar
-            - Searchbar
-            - Spotify player
-
-        - Pages:
-            - Welcome page
-            - Home page
-            - Artist display page
-            - Album display page
-            - Songs list page
-            - Playlist display page
-            - Settings page
-            - Collections display page
-            - Colletion creation page
     
     - Create routing for pages
 
@@ -115,34 +84,9 @@ Tasks:
     - Connect user account to last.fm account
     - Connect user account to spotify account
 
-    - Create database for app
-    - Create database structure
-    - Store data from app to database
-
     - Integrate React / Vue & Components
     - Understand how to continiously integrate spotify player
     - How to preserve component states when navigating through pages / routes
-
----
-
-Data structures / database
-
-User
-├ username
-├ password
-├ name
-├ surname
-├ created / joined date
-├ date of birth (optional)
-├ country (optional)
-├ artists
-├ albums
-├ songs
-├ collections (created in mystery, not spotify)
-│ └ songs
-├ followers
-├ following
-└ profile image
 
 ---
 

@@ -11304,6 +11304,9 @@ button {
   width: fit-content;
 }
 
+/* 
+    Navbar
+*/
 .navbar {
   background-color: #000b15;
 }
@@ -11424,6 +11427,9 @@ button {
      object-fit: cover;
 }
 
+/* 
+    Welcome screen
+*/
 .welcome-section {
   display: flex;
   flex-direction: column;
@@ -11539,7 +11545,32 @@ button {
   padding-left: 0.5rem;
 }
 
+/*
+    Home
+*/
 .home .carousel-item img {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+/* 
+    Profile
+*/
+.profile .recent-tracks .recent-tracks-single img {
+  width: 2rem;
+  height: 2rem;
+}
+.profile .recent-tracks .recent-tracks-single i {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  right: 2rem;
+}
+
+/* 
+    Artist
+*/
+.artist img {
+  width: 15rem;
 }
