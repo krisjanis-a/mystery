@@ -10,14 +10,14 @@ require __DIR__.'/../../Utils/createSpotifyApiInstance.php';
 
 class ArtistController extends Controller
 {
-    public function showArtist($name)
+    public function showArtist($artist)
     {
         $lastfmApi = new ArtistApi(new AuthApi('setsession', [
             'apiKey'=>env('LASTFM_API_KEY')
         ]));
 
         $artistDataLastfm = $lastfmApi->getInfo([
-            'artist'=>$name
+            'artist'=>$artist
         ]);
 
         $spotifyApi = createSpotifyApiInstance();

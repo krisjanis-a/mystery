@@ -25,8 +25,11 @@ class ProfileController extends Controller
             'apiKey'=>env('LASTFM_API_KEY')
         ]));
 
+        $limit = 20; // Amount of recent tracks to fetch
+
         $recentTracks = $lastfmApi->getRecentTracks([
-            'user' => $lastfmUsername
+            'user' => $lastfmUsername,
+            'limit' => $limit
         ]);
 
         // dd($recentTracks);

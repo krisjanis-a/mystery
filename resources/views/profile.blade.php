@@ -19,7 +19,9 @@
                     <a href="/artist/{{ $track['artist']['name'] }}">
                         <p>{{ $track['artist']['name'] }}</p>
                     </a>
-                    <p>{{ $track['name'] }}</p>
+                    <a href="/artist/{{ $track['artist']['name'] }}/song/{{ $track['name'] }}">
+                        <p>{{ $track['name'] }}</p>
+                    </a>
                     @if (isset($track['nowplaying']))
                     <i class="fa-solid fa-ear-listen"></i>
                     @endif

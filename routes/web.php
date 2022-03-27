@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ArtistController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -33,13 +34,11 @@ Route::get('/', function () {
     Artist routing
 */
 
-Route::get('/artist/{name}',[ArtistController::class, 'showArtist']);
+Route::get('/artist/{artist}',[ArtistController::class, 'showArtist']);
 
-Route::get('/album', function(){
-    return view('album');
-});
+Route::get('/artist/{artist}/song/{song}', [SongController::class, 'showSong']);
 
-Route::get('/song/{name}', [SongController::class, 'showSong']);
+Route::get('/artist/{artist}/album/{album}', [AlbumController::class, 'showAlbum']);
 
 Route::get('/collections', function(){
     return view('collections');

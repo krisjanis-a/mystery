@@ -11587,6 +11587,20 @@ button {
 }
 
 /* 
+    Artist
+*/
+.album .album-cover {
+  width: 15rem;
+}
+
+/* 
+    Song
+*/
+.song .album-cover {
+  width: 5rem;
+}
+
+/* 
     Footer
 */
 .footer {

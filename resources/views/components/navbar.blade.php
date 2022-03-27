@@ -14,10 +14,10 @@
                             <ul class="navigation-menu-dropdown dropdown-menu" aria-labelledby="navigation-menu-dropdown-button">
                                 <li><a href="/home">Home</a></li>
                                 <li><a href="/profile">Profile</a></li>
-                                <li><a href="/discover">Discover</a></li>
-                                <li><a href="/listening-history">Listening History</a></li>
+                                {{-- <li><a href="/discover">Discover</a></li> --}}
+                                {{-- <li><a href="/listening-history">Listening History</a></li> --}}
                                 <li><a href="/collections">Collections</a></li>
-                                <li><a href="/friends">Friends</a></li>
+                                {{-- <li><a href="/friends">Friends</a></li> --}}
                                 <li><a href="/settings">Settings</a></li>
                             </ul>
                         </div>
