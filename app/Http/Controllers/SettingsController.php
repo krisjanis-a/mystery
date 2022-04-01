@@ -217,7 +217,7 @@ class SettingsController extends Controller
         $user_id = Auth::user()->id;
 
         // Add response data to database
-        DB::update('update users set spotify_access_token = ?, spotify_refresh_token = ? where id = ?', [$access_token, $refresh_token, $user_id]);
+        DB::update('update users set spotify_access_token = ?, spotify_refresh_token = ?, scope = ? where id = ?', [$access_token, $refresh_token, '', $user_id]);
 
         return redirect('settings/spotify-session');
     }

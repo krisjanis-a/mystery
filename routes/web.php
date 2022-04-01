@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\CollectionsController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
@@ -40,9 +41,17 @@ Route::get('/artist/{artist}/song/{song}', [SongController::class, 'showSong']);
 
 Route::get('/artist/{artist}/album/{album}', [AlbumController::class, 'showAlbum']);
 
-Route::get('/collections', function(){
-    return view('collections');
-});
+/* 
+    Collections routing
+*/
+
+Route::get('/collections', [CollectionsController::class, 'index']);
+
+Route::get('/collections/playlists', [CollectionsController::class, 'showAllPlaylists']);
+
+Route::get('/collections/playlist/{id}',[CollectionsController::class, 'showPlaylist']);
+
+Route::get('/collections/collection/{id}',[CollectionsController::class, 'showCollection']);
 
 Route::get('/discover', function(){
     return view('discover');

@@ -1,3 +1,4 @@
+const { postCss } = require("laravel-mix");
 const mix = require("laravel-mix");
 
 /*
@@ -11,6 +12,29 @@ const mix = require("laravel-mix");
  |
  */
 
-mix.js("resources/js/app.js", "public/js")
-    .vue()
-    .sass("resources/sass/app.scss", "public/css");
+mix.js("resources/js/app.js", "public/js");
+
+mix.sass("resources/sass/app.scss", "public/css");
+
+mix.options({
+    postCss: [require("autoprefixer")],
+});
+
+mix.setPublicPath("public");
+
+mix.webpackConfig({
+    resolve: {
+        extensions: [".js", ".vue"],
+        alias: {
+            "@": __dirname + "resources",
+        },
+    },
+    output: {
+        chunkFilename: "js/chunks/[name].js",
+    },
+}).react();
+
+mix.vue();
+
+mix.js("resources/react-app/src/index.js", "public/js/app.js").version();
+mix.copy("resources/react-app/public", "public/assets");

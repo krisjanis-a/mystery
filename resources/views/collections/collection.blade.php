@@ -1,7 +1,7 @@
 @extends('/layouts/app')
 
 @section('content')
-    <div class="collections">
-        Collections
+    <div class="collection">
+        <h3>Collection</h3>
     </div>   
 @endsection

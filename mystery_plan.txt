@@ -5,16 +5,18 @@ Plan
 
 TODOs:
 
+Tasks
+    - create collections page with React
+
 - MVP
     - load a playlist from spotify (personal and other users')
         - allow to filter music by genre, year, artist, length, tempo etc.
         - option to create new collection from filtered songs
         - save new collection to spotify
-        - 
+
     - save user's collections to database
     - share newly created playlist
 
-    - artist, album and song view pages
 
 - Settings page
     - upload image & save to database
