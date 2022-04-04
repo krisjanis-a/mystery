@@ -1,0 +1,42 @@
+.song-item {
+  color: #e5e5e5;
+}
+
+.song-item td {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.song-item .song-position {
+  font-family: "Azeret Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+.song-item .album,
+.song-item .artist,
+.song-item .date-added {
+  font-weight: 300;
+}
+
+.song-item button {
+  background: none;
+  border: none;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: default;
+}
+
+.song-item button i {
+  color: #9d9d9d;
+  cursor: pointer;
+}
+
+.song-item button i:hover {
+  color: #e5e5e5;
+}
+/*# sourceMappingURL=Song.css.map */

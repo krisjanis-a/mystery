@@ -1,10 +1,5 @@
 {
-    "/js/app.js": "/js/app.js?id=c30e7baba5c99506ede6b0383e24abe0",
-    "/css/app.css": "/css/app.css?id=bae1c60daef46ab2ecbdaa377be90987",
-    "/assets/favicon.ico": "/assets/favicon.ico?id=b813881ffe7b1199eee34977e7a31bf9",
-    "/assets/index.html": "/assets/index.html?id=ef8a02db437c74f2ecb0d88becc4b9d4",
-    "/assets/logo192.png": "/assets/logo192.png?id=995306f3f1b50873ba0fe4c857a90d22",
-    "/assets/logo512.png": "/assets/logo512.png?id=93c81d868a39562d52258e5b5b267644",
-    "/assets/manifest.json": "/assets/manifest.json?id=d9d975cebe2ec20b6c652e1e4c12ccf0",
-    "/assets/robots.txt": "/assets/robots.txt?id=fa1ded1ed7c11438a9b0385b1e112850"
+    "/js/app.js": "/js/app.js?id=556a37bd21d5e64abad0fd1d86b094ad",
+    "/js/react-app.js": "/js/react-app.js?id=82e77374a26d6a4b4e3d3c9d64dd2df4",
+    "/css/app.css": "/css/app.css?id=21ba62d7b0d26fef407cbe327277910a"
 }

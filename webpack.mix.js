@@ -36,5 +36,5 @@ mix.webpackConfig({
 
 mix.vue();
 
-mix.js("resources/react-app/src/index.js", "public/js/app.js").version();
+mix.js("resources/react-app/src/index.js", "public/js/react-app.js").version();
 mix.copy("resources/react-app/public", "public/assets");

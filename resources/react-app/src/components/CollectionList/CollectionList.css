@@ -1,0 +1,17 @@
+.collection-list {
+  background-color: #0e1115;
+  height: 100%;
+}
+
+.collection-list ul {
+  padding: 0;
+}
+
+.collection-list a {
+  text-decoration: none;
+}
+
+.collection-list li {
+  list-style-type: none;
+}
+/*# sourceMappingURL=CollectionList.css.map */

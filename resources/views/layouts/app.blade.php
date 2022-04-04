@@ -31,6 +31,7 @@
         <main class="content-wrapper">
             @yield('content')
         </main>
+        <div class="footer-blankspace"></div>
         <x-footer/>
     </div>
 </body>

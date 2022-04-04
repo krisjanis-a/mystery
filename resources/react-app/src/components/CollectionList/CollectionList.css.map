@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACb,gBAAgB,EAAE,OAAO;EACzB,MAAM,EAAE,IAAI;CAaf;;AAfD,AAII,gBAJY,CAIZ,EAAE,CAAC;EACC,OAAO,EAAE,CAAC;CACb;;AANL,AAQI,gBARY,CAQZ,CAAC,CAAC;EACE,eAAe,EAAE,IAAI;CACxB;;AAVL,AAYI,gBAZY,CAYZ,EAAE,CAAC;EACC,eAAe,EAAE,IAAI;CACxB",
+    "sources": [
+        "CollectionList.scss"
+    ],
+    "names": [],
+    "file": "CollectionList.css"
+}

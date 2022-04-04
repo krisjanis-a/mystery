@@ -1,0 +1,479 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Zen+Dots&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@100;200;300;400;500&display=swap");
+* {
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+html {
+  position: relative;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+body {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#app {
+  min-height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+}
+
+.content-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+/* 
+    Navbar
+*/
+.navbar {
+  background-color: #000b15;
+  width: 100%;
+}
+
+.navbar .navbar-left {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navbar .navigation-menu {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navbar .menu-toggle {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navbar #navigation-menu-dropdown-button {
+  width: 2rem;
+  background: none;
+  font-size: 1.5rem;
+  color: #8a7141;
+}
+
+.navbar .navigation-menu-dropdown {
+  padding: 0.5rem;
+  position: absolute;
+  left: 0;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #000b15;
+  border: 1px solid #6d6d6d;
+}
+
+.navbar .navigation-menu-dropdown a {
+  text-decoration: none;
+  color: #c4c4c4;
+}
+
+.navbar .navigation-menu-dropdown a:hover {
+  text-shadow: 0px 0px 1px #c4c4c4;
+}
+
+.navbar .navbar-search-bar {
+  background-color: #c4c4c4;
+  width: 10rem;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar .navbar-search-button {
+  color: #c4c4c4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0 0.5rem;
+  border: none;
+  background: none;
+}
+
+.navbar .navbar-search-button:hover {
+  text-shadow: #fff;
+}
+
+.navbar .navbar-app-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #c4c4c4;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navbar .navbar-brand {
+  color: #c4c4c4;
+  margin: auto;
+}
+
+.navbar .navbar-brand:hover {
+  color: #c4c4c4;
+  text-shadow: 0px 0px 1px #c4c4c4;
+}
+
+.navbar .navbar-right {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.navbar .navbar-user .nav-item {
+  padding: 0.5rem;
+}
+
+.navbar .navbar-user .nav-link {
+  padding: 0;
+  color: #c4c4c4;
+}
+
+.navbar .navbar-user .nav-link:hover {
+  color: #c4c4c4;
+  text-shadow: 0px 0px 1px #c4c4c4;
+}
+
+.navbar .navbar-user-dropdown {
+  position: absolute;
+  background-color: #000b15;
+  border: 1px solid #6d6d6d;
+}
+
+.navbar .navbar-user-dropdown .dropdown-item,
+.navbar .navbar-user-dropdown .dropdown-item:hover {
+  background-color: #000b15;
+  color: #c4c4c4;
+}
+
+.navbar .navbar-user-dropdown .dropdown-item:hover {
+  text-shadow: 0px 0px 1px #c4c4c4;
+}
+
+.navbar .navbar-user-image {
+  margin: 0 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+/* 
+    Welcome screen
+*/
+.welcome-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-color: #000b15;
+  min-height: 100vh;
+}
+
+.welcome-section .welcome-button {
+  width: 8rem;
+  border-radius: 0.85rem;
+  padding: 0.25rem 0.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #e5e5e5;
+}
+
+.welcome-section .welcome-button-link {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.welcome-section .welcome-button:hover {
+  -webkit-filter: brightness(110%);
+          filter: brightness(110%);
+}
+
+.welcome-section .welcome-login-button {
+  background-color: #104150;
+  border: 2px solid #005e77;
+}
+
+.welcome-section .welcome-register-button {
+  background-color: #082027;
+  border: 2px solid #2f515a;
+}
+
+.welcome-section .continue-as-guest-link,
+.welcome-section .continue-to-site {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 0.75rem;
+  margin: 0 0.5rem;
+}
+
+.welcome-section .continue-as-guest-link:hover,
+.welcome-section .continue-to-site:hover {
+  text-shadow: 0px 0px 1px #9f8d69;
+}
+
+.welcome-section h1 {
+  font-family: "Zen Dots", cursive;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 600;
+  letter-spacing: 0.25rem;
+  padding-bottom: 1.5rem;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #000b15;
+}
+
+.welcome-section h3 {
+  color: #9f8d69;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.welcome-section h4 {
+  color: #e5e5e5;
+}
+
+.welcome-section .content {
+  position: absolute;
+  width: 100%;
+}
+
+.welcome-section .titles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem 0;
+  padding-left: 3rem;
+}
+
+.welcome-section .actions {
+  padding: 1rem 0;
+  padding-left: 3rem;
+}
+
+.welcome-section .actions a {
+  color: #9f8d69;
+}
+
+.welcome-section .welcome-username {
+  font-style: italic;
+}
+
+.welcome-section .background-image img {
+  width: 100%;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.welcome-section .affiliates {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.welcome-section .affiliates .affiliates-text {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.welcome-section .affiliates .affiliate-icon {
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+}
+
+/*
+    Home
+*/
+.home .carousel-item img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* 
+    Profile
+*/
+.profile .recent-tracks .recent-tracks-single img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.profile .recent-tracks .recent-tracks-single i {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  right: 2rem;
+}
+
+/* 
+    Artist
+*/
+.artist img {
+  width: 15rem;
+}
+
+/* 
+    Album
+*/
+.album .album-cover {
+  width: 15rem;
+}
+
+/* 
+    Song
+*/
+.song .album-cover {
+  width: 5rem;
+}
+
+/* 
+    Collections
+*/
+.collections {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 100%;
+}
+
+/* 
+    Footer
+*/
+.footer-blankspace {
+  height: 5rem;
+}
+
+.footer {
+  background-color: #000b15;
+  padding: 0rem 1rem;
+  width: 100%;
+  height: 5rem;
+  position: absolute;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.footer .affiliates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  white-space: nowrap;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .affiliates .affiliates-text {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.footer .affiliates .affiliate-icon {
+  font-size: 1.5rem;
+  padding-left: 0.5rem;
+}
+/*# sourceMappingURL=main.css.map */

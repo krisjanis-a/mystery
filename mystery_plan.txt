@@ -1,52 +1,109 @@
+ //======================\\
+//                        \\
+||    Application Plan    ||
+\\                        //
+ \\======================//
 
-Plan
+<---|--->
 
----
+|=======|
+| Pages |
+|=======|
 
-TODOs:
+Collections page
+================
 
-Tasks
-    - create collections page with React
+    I. Main
+    -------
 
-- MVP
-    - load a playlist from spotify (personal and other users')
-        - allow to filter music by genre, year, artist, length, tempo etc.
-        - option to create new collection from filtered songs
-        - save new collection to spotify
+    Features:
+    - Two modes of operation:
+        - Spotify playlist mode
+        - Collections mode
+    
+    Tasks:
+    - Implement two display modes in React app
 
-    - save user's collections to database
-    - share newly created playlist
+    II. Collections mode
+    --------------------
+
+        Features:
+        - Create new collection from scratch or use existing spotify playlist as template
+        - Delete existing collection
+        - Share collection in some format (later via App itself)
+        - Save collection as new spotify playlist
+        
+
+        - Display collections from database in collecions list
+        - Display collection information in header
+        - Display collections' songs from database in song list
+
+        Tasks:
+        - Database
+            - decide data structure
+            - create database table for collections
+            - functions for updating database
+        
+        - UI / Frontend
+            - 
 
 
-- Settings page
+    III. Spotify playlist mode
+    --------------------------
+
+        Features:
+        - View playlist
+        - Filter playlist songs by artist, genre, year & other parameters (tbd)
+        - Create new collection using spotify playlist as template
+            NB! - when creating collection from inside a filtered / altered spotify playlist view,
+            the newly created collection should mirror that version of spotify playlist, not original
+        - Load spotify playlist in view from url 
+
+Home page
+=========
+
+Profile page
+============
+
+Settings page
+=============
+
     - upload image & save to database
     - edit user information fields
-    
-- 
 
-- Overall tasks
-    - login, register, forgot password pages -> fix styling to mystery app design
 
-Stuff to learn / implement
+<---|--->
 
-    - Connect user account to facebook account
+|===============|
+| Tasks & TODOs |
+|===============|
 
-    - Integrate React / Vue & Components
-    - Understand how to continiously integrate spotify player
-    - How to preserve component states when navigating through pages / routes
+    - Overall tasks
+        - login, register, forgot password pages -> fix styling to mystery app design
 
----
+    - Stuff to learn / implement
 
-Primary goals / functions for application
+        - Connect user account to facebook account
+        - Build and learn how to continiously integrate spotify player
 
-1. Load a playlist from spotify -> sort / filter music by genre, artist, album, year etc.
-2. Create new playlists / collections and add to spotify playlists
-3. Get suggested artists from recently listened artists
-4. Find unpopular artists
 
----
+<---|--->
 
-The ideas for the application:
+|==========================================|
+| Primary goals / functions of application |
+|==========================================|
+
+    1. Load a playlist from spotify -> sort / filter music by genre, artist, album, year etc.
+    2. Create new playlists / collections and add to spotify playlists
+    3. Get suggested artists from recently listened artists
+    4. Find unpopular artists
+
+
+<---|--->
+
+|===========================|
+| Ideas for the application |
+|===========================|
 
     Create a personalized library / collection of user's favourite music and artists
 
@@ -68,27 +125,32 @@ The ideas for the application:
 
     Take music from spotify liked tracks / playlists and organize by genre / date of release / listen counts
 
----
+
+<---|--->
 
 APIs to use:
 
-    - Spotify
-    - Last.fm
+    - Spotify Web API
+    - Last.fm API
 
----
+
+<---|--->
 
 Inspirations:
 
-    OrganizeYourMusic (uses Spotify API)
+    - OrganizeYourMusic (uses Spotify API) [http://organizeyourmusic.playlistmachinery.com/index.html]
+    - Spotify [https://open.spotify.com]
+    - LastFM [https://www.last.fm/home]
 
----
+
+<---|--->
 
 Tree line characters
  
 ─ │ ├ ┤ ┴ ┬ ┼ └ ┘ ┐ ┌
 
 
----
+<---|--->
 
 Picture links:
 

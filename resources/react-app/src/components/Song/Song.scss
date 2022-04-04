@@ -1,0 +1,37 @@
+.song-item {
+    color: #e5e5e5;
+
+    td {
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+
+    .song-position {
+        font-family: "Azeret Mono", monospace;
+        font-size: 0.75rem;
+        font-weight: 300;
+    }
+
+    .album,
+    .artist,
+    .date-added {
+        font-weight: 300;
+    }
+
+    button {
+        background: none;
+        border: none;
+        height: fit-content;
+        width: fit-content;
+        cursor: default;
+
+        i {
+            color: #9d9d9d;
+            cursor: pointer;
+        }
+
+        i:hover {
+            color: #e5e5e5;
+        }
+    }
+}
