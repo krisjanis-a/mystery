@@ -408,7 +408,7 @@ button {
 /* 
     Collections
 */
-.collections {
+.collections-app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

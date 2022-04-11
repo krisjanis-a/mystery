@@ -24,7 +24,7 @@ mix.setPublicPath("public");
 
 mix.webpackConfig({
     resolve: {
-        extensions: [".js", ".vue"],
+        extensions: [".js", ".jsx", ".vue"],
         alias: {
             "@": __dirname + "resources",
         },
@@ -36,5 +36,6 @@ mix.webpackConfig({
 
 mix.vue();
 
-mix.js("resources/react-app/src/index.js", "public/js/react-app.js").version();
+mix.js("resources/react-app/src/index.js", "public/js/react-app.js");
+// mix.js("resources/react-app/src/index.js", "public/js/react-app.js").version();
 mix.copy("resources/react-app/public", "public/assets");

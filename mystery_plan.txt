@@ -18,11 +18,16 @@ Collections page
 
     Features:
     - Two modes of operation:
-        - Spotify playlist mode
+        - Spotify playlists mode
         - Collections mode
+
+    - Visuals & UI
+        - Windows & columns should be resizeable & shrink content | add "..."
+        - User should be able to customize displayed columns
     
     Tasks:
-    - Implement two display modes in React app
+    DONE - Implement two display modes in React app
+    DONE - Add redux store
 
     II. Collections mode
     --------------------

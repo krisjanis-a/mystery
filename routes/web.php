@@ -47,9 +47,9 @@ Route::get('/artist/{artist}/album/{album}', [AlbumController::class, 'showAlbum
 
 Route::get('/collections', [CollectionsController::class, 'index']);
 
-Route::get('/collections/playlists', [CollectionsController::class, 'showAllPlaylists']);
+Route::get('/collections/playlists', [CollectionsController::class, 'fetchAllPlaylists']);
 
-Route::get('/collections/playlist/{id}',[CollectionsController::class, 'showPlaylist']);
+Route::get('/collections/playlist/{id}',[CollectionsController::class, 'fetchPlaylistContent']);
 
 Route::get('/collections/collection/{id}',[CollectionsController::class, 'showCollection']);
 

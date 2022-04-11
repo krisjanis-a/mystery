@@ -18,31 +18,23 @@ class CollectionsController extends Controller
         return view('collections.index');
     }    
     
-    public function showAllPlaylists()
+    public function fetchAllPlaylists()
     {
         // Load users Spotify playlists
         $spotifyAPI = createSpotifyApiInstance();
         $userPlaylists = $spotifyAPI->getMyPlaylists(['limit'=>50])->items;
         
-        // return dd($userPlaylists);
-
-        return view('collections.all-playlists', [
-            'userPlaylists'=>$userPlaylists
-        ]);
+        return $userPlaylists;
     }
 
     // Open playlist display page
-    public function showPlaylist($id)
+    public function fetchPlaylistContent($id)
     {
         $spotifyAPI = createSpotifyApiInstance();
 
         $playlist = $spotifyAPI->getPlaylist($id);
 
-        // return dd($playlist);
-
-        return view('collections.playlist',[
-            'playlist'=>$playlist
-        ]);
+        return $playlist;
     }
 
     // Open collection display page

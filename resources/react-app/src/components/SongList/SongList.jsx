@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Song from "../Song/Song";
 import "./SongList.css";
 
 const SongList = () => {
-    // const songs = Array.from({ length: 5 }, (v, k) => k + 1);
-    const songs = Array.from({ length: 50 }, (v, k) => k + 1);
+    const [songs, setSongs] = useState([]);
+    const [playlist, setPlaylist] = useState([]);
+
+    const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
+
+    const fetchPlaylist = (currentPlaylist) => {
+        fetch("/collections/playlist/" + currentPlaylist)
+            .then((response) => response.json())
+            .then((data) => setPlaylist(data));
+    };
+
+    useEffect(() => {
+        if (currentPlaylist !== null) {
+            fetchPlaylist(currentPlaylist);
+        }
+    }, [currentPlaylist]);
+
+    useEffect(() => {
+        if (playlist.length !== 0) {
+            setSongs(playlist["tracks"]["items"]);
+        }
+    }, [playlist]);
+
+    // useEffect(() => {
+    //     console.log(songs);
+    // }, [songs]);
 
     return (
         <div className="song-list">
@@ -26,16 +51,26 @@ const SongList = () => {
                             </tr>
                         </thead>
 
-                        {/* 
-                            Loop through all songs
-                        */}
                         <tbody className="table-body">
-                            {songs.map((song) => {
-                                return <Song index={song} key={song} />;
-                            })}
+                            {songs.length !== 0 && (
+                                <>
+                                    {songs.map((song, index) => {
+                                        return (
+                                            <Song
+                                                song={song}
+                                                index={index}
+                                                key={song["track"]["id"]}
+                                            />
+                                        );
+                                    })}
+                                </>
+                            )}
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div className="songs-empty-alert">
+                {songs.length === 0 && <h3>Nothing to display</h3>}
             </div>
         </div>
     );

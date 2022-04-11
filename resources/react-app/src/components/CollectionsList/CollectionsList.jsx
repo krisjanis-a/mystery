@@ -1,11 +1,11 @@
 import React from "react";
-import "./CollectionList.css";
+import "./CollectionsList.css";
 
 const CollectionList = () => {
     const collections = Array.from({ length: 10 }, (v, k) => k + 1);
 
     return (
-        <div className="collection-list">
+        <div className="collections-list">
             <h3>Your collections</h3>
             <ul>
                 {collections.map((index) => {

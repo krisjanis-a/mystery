@@ -1,0 +1,58 @@
+.playlists-list {
+    background-color: #0e1115;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    ::-webkit-scrollbar {
+        width: 0.5rem; /* Remove scrollbar space */
+        background: transparent; /* Optional: just make scrollbar invisible */
+        padding-top: 4rem;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #333333;
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #424242;
+    }
+
+    h3 {
+        color: #e5e5e5;
+    }
+
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+
+    .list-item {
+        list-style-type: none;
+        text-decoration: none;
+        color: #bbbbbb;
+        cursor: pointer;
+    }
+
+    .list-item:hover {
+        text-shadow: 0px 0px 1px #e5e5e5;
+    }
+
+    .list-items-container {
+        position: relative;
+        overflow-y: scroll;
+
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}

@@ -1,15 +1,24 @@
-.collections-app {
-    width: 100%;
-    height: 100%;
-}
-
 .collections-app-container {
     display: flex;
     width: 100%;
     min-height: 100%;
 }
 
-.collection-list-container {
+.change-mode-button {
+    background-color: #181f29;
+    width: fit-content;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    color: #e5e5e5;
+    border: 1px solid #9f8d69;
+    border-radius: 0.5rem;
+}
+
+/* .collections-list-container, */
+/* .playlists-list-container */
+.lists-container {
+    background-color: #0e1115;
+
     width: 20%;
     min-width: 12rem;
 

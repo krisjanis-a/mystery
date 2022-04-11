@@ -1,0 +1,26 @@
+.collections-list {
+  background-color: #0e1115;
+  height: 100%;
+}
+
+.collections-list h3 {
+  color: #e5e5e5;
+}
+
+.collections-list ul {
+  padding: 0;
+}
+
+.collections-list a {
+  text-decoration: none;
+  color: #bbbbbb;
+}
+
+.collections-list a:hover {
+  text-shadow: 0px 0px 1px #e5e5e5;
+}
+
+.collections-list li {
+  list-style-type: none;
+}
+/*# sourceMappingURL=CollectionsList.css.map */
