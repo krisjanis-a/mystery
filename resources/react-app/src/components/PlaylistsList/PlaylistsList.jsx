@@ -1,32 +1,43 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./PlaylistsList.css";
-import { setCurrentPlaylist } from "../../store/CurrentPlaylist/CurrentPlaylist.action";
+import { setCurrentPlaylistId } from "../../store/CurrentPlaylist/CurrentPlaylist.action";
+import { setPlaylists as savePlaylistsToRedux } from "../../store/Playlists/Playlists.action";
+import { setDisplayPlaylistsMode } from "../../store/DisplayMode/DisplayMode.action";
 
 const PlaylistsList = () => {
     const dispatch = useDispatch();
+    const savedPlaylists = useSelector((state) => state.Playlists.playlists);
     const [playlists, setPlaylists] = useState([]);
 
-    const fetchPlaylists = () => {
-        // const playlists = fetch("/collections/playlists")
-        fetch("/collections/playlists")
-            .then((response) => response.json())
-            .then((data) => setPlaylists(data));
-
-        // return playlists;
-    };
-
     useEffect(() => {
-        fetchPlaylists();
-    }, []);
+        const fetchPlaylists = () => {
+            fetch("/collections/playlists")
+                .then((response) => response.json())
+                .then((data) => {
+                    setPlaylists(data);
+                    saveFetchedPlaylists(data);
+                });
+        };
 
-    const handleSetCurrentPlaylist = (playlistId) => {
-        dispatch(setCurrentPlaylist(playlistId));
+        const saveFetchedPlaylists = (data) => {
+            dispatch(savePlaylistsToRedux(data));
+        };
+
+        if (savedPlaylists !== null) {
+            // console.log("Loading playlists from redux");
+            setPlaylists(savedPlaylists);
+        }
+        if (savedPlaylists === null) {
+            // console.log("Fetching playlists from db");
+            fetchPlaylists();
+        }
+    }, [savedPlaylists, dispatch]);
+
+    const handleClickOnPlaylist = (playlistId) => {
+        dispatch(setCurrentPlaylistId(playlistId));
+        dispatch(setDisplayPlaylistsMode());
     };
-
-    // useEffect(() => {
-    //     console.log(playlists);
-    // }, [playlists]);
 
     return (
         <div className="playlists-list">
@@ -40,7 +51,7 @@ const PlaylistsList = () => {
                                     className="list-item"
                                     key={playlist["name"]}
                                     onClick={() =>
-                                        handleSetCurrentPlaylist(playlist["id"])
+                                        handleClickOnPlaylist(playlist["id"])
                                     }
                                 >
                                     {playlist["name"]}

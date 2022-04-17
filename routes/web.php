@@ -51,7 +51,13 @@ Route::get('/collections/playlists', [CollectionsController::class, 'fetchAllPla
 
 Route::get('/collections/playlist/{id}',[CollectionsController::class, 'fetchPlaylistContent']);
 
-Route::get('/collections/collection/{id}',[CollectionsController::class, 'showCollection']);
+Route::get('/collections/collections', [CollectionsController::class, 'fetchAllCollections']);
+
+Route::get('/collections/collection/{id}',[CollectionsController::class, 'fetchCollectionContent']);
+
+/* 
+    Other routes
+*/
 
 Route::get('/discover', function(){
     return view('discover');
@@ -77,7 +83,7 @@ Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/settings', [SettingsController::class, 'index']);
 
-// last.fm routes
+    // last.fm routes
 Route::get('/settings/lastfm-session', [SettingsController::class, 'lastfmSession']);
 
 Route::get('/settings/request-lastfm-authorization', [SettingsController::class, 'requestLastfmAuthorization']);
@@ -86,7 +92,7 @@ Route::get('/settings/create-lastfm-session', [SettingsController::class, 'creat
 
 Route::get('/settings/disconnect-lastfm-account', [SettingsController::class, 'disconnectLastfmAccount']);
 
-// Spotify routes
+    // Spotify routes
 Route::get('/settings/spotify-session', [SettingsController::class, 'spotifySession']);
 
 Route::get('/settings/request-spotify-authorization', [SettingsController::class, 'requestSpotifyAuthorization']);

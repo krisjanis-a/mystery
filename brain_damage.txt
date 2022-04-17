@@ -1,0 +1,50 @@
+<- CollectionsApp ->
+
+    When you click collections it opens a SPA (single page application).
+
+    The application has two windows.
+
+    The window on the left is called Navigator.
+
+    Navigator displays a list of collections or playlists.
+
+    The window on the right is called Viewer.
+
+    Viewer displays a Header and a list (SongList) of songs (Song) from a selected playlist or collection.
+
+    If no playlist or collection is selected the Viewer shows message "Select playlist or collection to display".
+
+    {*playlist === Spotify playlist}
+
+    Navigator and Viewer can operate in two modes:
+       1) playlist mode;
+       2) collection mode.
+
+    The modes of Navigator and Viewer are separated, i.e. Navigator can be used to browse collections in collection mode and Viewer can be displaying a playlist in playlist mode.
+
+<- Navigator ->
+
+Navigator contains:
+    - A heading that says "Your playlists" or "Your collections" depending on mode.
+    - A list of playlist/collection names
+    - A button to switch Navigator mode
+
+Navigator->PlaylistMode
+
+    When Navigator is in playlist mode it displays a list of user's spotify playlists.
+    
+    A searchbar is displayed below heading where user can input any valid Spotify playlist ID and download the playlist into app.
+
+    When user clicks on playlist name:
+        - the Viewer is set to playlist mode
+        - playlist info is displayed in Header
+        - playlist songs are loaded into SongList
+
+
+
+Navigator->CollectionMode
+
+    When Navigator is in collection mode it displays a list of user's collections from database.
+
+<- Viewer ->
+

@@ -1,10 +1,16 @@
 import { combineReducers } from "redux";
-import Mode from "./Mode/Mode.reducer";
+import DisplayMode from "./DisplayMode/DisplayMode.reducer";
+import ListMode from "./ListMode/ListMode.reducer";
 import CurrentPlaylist from "./CurrentPlaylist/CurrentPlaylist.reducer";
+import Playlists from "./Playlists/Playlists.reducer";
+import Collections from "./Collections/Collections.reducer";
 
 const rootReducer = combineReducers({
-    Mode,
+    Collections,
     CurrentPlaylist,
+    DisplayMode,
+    ListMode,
+    Playlists,
 });
 
 export default rootReducer;

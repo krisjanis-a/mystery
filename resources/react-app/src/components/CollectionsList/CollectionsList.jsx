@@ -1,23 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CollectionsList.css";
 
 const CollectionList = () => {
-    const collections = Array.from({ length: 10 }, (v, k) => k + 1);
+    const [collections, setCollections] = useState([]);
+
+    const handleClickCollection = () => {};
+
+    const handleClickCreateCollection = () => {};
 
     return (
         <div className="collections-list">
             <h3>Your collections</h3>
-            <ul>
-                {collections.map((index) => {
-                    return (
-                        <a href="" className="collection-name-link" key={index}>
-                            <li className="collection-name">
-                                Collection name {index}
-                            </li>
-                        </a>
-                    );
-                })}
-            </ul>
+            <div className="list-items-container">
+                <ul>
+                    {collections.length !== 0 ? (
+                        collections.map((index) => {
+                            return (
+                                <li
+                                    className="list-item"
+                                    key={index}
+                                    onClick={() => handleClickCollection()}
+                                >
+                                    Collection name {index}
+                                </li>
+                            );
+                        })
+                    ) : (
+                        <p>No collections to display</p>
+                    )}
+
+                    <li
+                        className="list-item"
+                        onClick={() => handleClickCreateCollection()}
+                    >
+                        {/* <i className="fa-solid fa-plus"></i> */}
+                        <i className="fa-solid fa-circle-plus"></i>
+                        Create collection
+                    </li>
+                </ul>
+            </div>
         </div>
     );
 };

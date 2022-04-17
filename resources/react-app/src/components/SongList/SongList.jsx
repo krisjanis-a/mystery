@@ -7,29 +7,25 @@ const SongList = () => {
     const [songs, setSongs] = useState([]);
     const [playlist, setPlaylist] = useState([]);
 
-    const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
+    const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
 
-    const fetchPlaylist = (currentPlaylist) => {
-        fetch("/collections/playlist/" + currentPlaylist)
+    const fetchPlaylist = (currentPlaylistId) => {
+        fetch("/collections/playlist/" + currentPlaylistId)
             .then((response) => response.json())
             .then((data) => setPlaylist(data));
     };
 
     useEffect(() => {
-        if (currentPlaylist !== null) {
-            fetchPlaylist(currentPlaylist);
+        if (currentPlaylistId !== null) {
+            fetchPlaylist(currentPlaylistId);
         }
-    }, [currentPlaylist]);
+    }, [currentPlaylistId]);
 
     useEffect(() => {
         if (playlist.length !== 0) {
             setSongs(playlist["tracks"]["items"]);
         }
     }, [playlist]);
-
-    // useEffect(() => {
-    //     console.log(songs);
-    // }, [songs]);
 
     return (
         <div className="song-list">

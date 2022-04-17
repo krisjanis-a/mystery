@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
     const [playlist, setPlaylist] = useState([]);
 
-    const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
+    const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
 
     const fetchPlaylist = (currentPlaylist) => {
         fetch("/collections/playlist/" + currentPlaylist)
@@ -18,10 +18,10 @@ const Header = () => {
     };
 
     useEffect(() => {
-        if (currentPlaylist !== null) {
-            fetchPlaylist(currentPlaylist);
+        if (currentPlaylistId !== null) {
+            fetchPlaylist(currentPlaylistId);
         }
-    }, [currentPlaylist]);
+    }, [currentPlaylistId]);
 
     return (
         <div className="header">
@@ -54,7 +54,7 @@ const Header = () => {
                     <h3>Select a playlist or collection</h3>
                 </>
             )}
-            <button onClick={() => showInfo()}>show info</button>
+            {/* <button onClick={() => showInfo()}>show info</button> */}
         </div>
     );
 };

@@ -28,6 +28,12 @@ Collections page
     Tasks:
     DONE - Implement two display modes in React app
     DONE - Add redux store
+    - create necessary things for collections in database
+    - create collections view & edit features
+        - add songs
+        - delete songs
+        - drag & drop reorder
+        - drag & drop add to another collection
 
     II. Collections mode
     --------------------
@@ -50,7 +56,8 @@ Collections page
             - functions for updating database
         
         - UI / Frontend
-            - 
+            - Create new collection
+            - Display/Edit collection
 
 
     III. Spotify playlist mode
@@ -84,7 +91,7 @@ Settings page
 |===============|
 
     - Overall tasks
-        - login, register, forgot password pages -> fix styling to mystery app design
+        - login, register, forgot password pages -> fix styling to app design
 
     - Stuff to learn / implement
 

@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SongList_SongList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/SongList/SongList */ "./resources/react-app/src/components/SongList/SongList.jsx");
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.css */ "./resources/react-app/src/App.css");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_Mode_Mode_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/Mode/Mode.action */ "./resources/react-app/src/store/Mode/Mode.action.js");
+/* harmony import */ var _store_ListMode_ListMode_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./store/ListMode/ListMode.action */ "./resources/react-app/src/store/ListMode/ListMode.action.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
@@ -34,8 +34,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useDispatch)();
-  var appMode = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
-    return state.Mode;
+  var listMode = (0,react_redux__WEBPACK_IMPORTED_MODULE_5__.useSelector)(function (state) {
+    return state.ListMode;
   });
 
   var handleChangeMode = function handleChangeMode(setMode) {
@@ -44,21 +44,21 @@ function App() {
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: "collections-app-container",
-    children: [appMode.collectionsMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    children: [listMode.listCollectionsMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "lists-container collections-list-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_CollectionsList_CollectionsList__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         className: "change-mode-button",
         onClick: function onClick() {
-          return handleChangeMode((0,_store_Mode_Mode_action__WEBPACK_IMPORTED_MODULE_6__.setPlaylistsMode)());
+          return handleChangeMode((0,_store_ListMode_ListMode_action__WEBPACK_IMPORTED_MODULE_6__.setListPlaylistsMode)());
         },
         children: "Show Spotify playlists"
       })]
-    }), appMode.playlistsMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    }), listMode.listPlaylistsMode && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "lists-container playlists-list-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_components_PlaylistsList_PlaylistsList__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         className: "change-mode-button",
         onClick: function onClick() {
-          return handleChangeMode((0,_store_Mode_Mode_action__WEBPACK_IMPORTED_MODULE_6__.setCollectionsMode)());
+          return handleChangeMode((0,_store_ListMode_ListMode_action__WEBPACK_IMPORTED_MODULE_6__.setListCollectionsMode)());
         },
         children: "Show collections"
       })]
@@ -88,31 +88,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CollectionsList_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CollectionsList.css */ "./resources/react-app/src/components/CollectionsList/CollectionsList.css");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
 
 
 var CollectionList = function CollectionList() {
-  var collections = Array.from({
-    length: 10
-  }, function (v, k) {
-    return k + 1;
-  });
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      collections = _useState2[0],
+      setCollections = _useState2[1];
+
+  var handleClickCollection = function handleClickCollection() {};
+
+  var handleClickCreateCollection = function handleClickCreateCollection() {};
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "collections-list",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h3", {
       children: "Your collections"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("ul", {
-      children: collections.map(function (index) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
-          href: "",
-          className: "collection-name-link",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
-            className: "collection-name",
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "list-items-container",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+        children: [collections.length !== 0 ? collections.map(function (index) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+            className: "list-item",
+            onClick: function onClick() {
+              return handleClickCollection();
+            },
             children: ["Collection name ", index]
-          })
-        }, index);
+          }, index);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "No collections to display"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("li", {
+          className: "list-item",
+          onClick: function onClick() {
+            return handleClickCreateCollection();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+            className: "fa-solid fa-circle-plus"
+          }), "Create collection"]
+        })]
       })
     })]
   });
@@ -166,7 +194,7 @@ var Header = function Header() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.CurrentPlaylist;
   }),
-      currentPlaylist = _useSelector.currentPlaylist;
+      currentPlaylistId = _useSelector.currentPlaylistId;
 
   var fetchPlaylist = function fetchPlaylist(currentPlaylist) {
     fetch("/collections/playlist/" + currentPlaylist).then(function (response) {
@@ -181,13 +209,13 @@ var Header = function Header() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (currentPlaylist !== null) {
-      fetchPlaylist(currentPlaylist);
+    if (currentPlaylistId !== null) {
+      fetchPlaylist(currentPlaylistId);
     }
-  }, [currentPlaylist]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  }, [currentPlaylistId]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "header",
-    children: [playlist.length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+    children: playlist.length !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "image-container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
@@ -209,12 +237,7 @@ var Header = function Header() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
         children: "Select a playlist or collection"
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-      onClick: function onClick() {
-        return showInfo();
-      },
-      children: "show info"
-    })]
+    })
   });
 };
 
@@ -238,7 +261,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _PlaylistsList_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlaylistsList.css */ "./resources/react-app/src/components/PlaylistsList/PlaylistsList.css");
 /* harmony import */ var _store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/CurrentPlaylist/CurrentPlaylist.action */ "./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.action.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_Playlists_Playlists_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/Playlists/Playlists.action */ "./resources/react-app/src/store/Playlists/Playlists.action.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -258,50 +282,63 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var PlaylistsList = function PlaylistsList() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var savedPlaylists = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.Playlists.playlists;
+  });
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       playlists = _useState2[0],
       setPlaylists = _useState2[1];
 
-  var fetchPlaylists = function fetchPlaylists() {
-    // const playlists = fetch("/collections/playlists")
-    fetch("/collections/playlists").then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      return setPlaylists(data);
-    }); // return playlists;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchPlaylists = function fetchPlaylists() {
+      fetch("/collections/playlists").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        setPlaylists(data);
+        saveFetchedPlaylists(data);
+      });
+    };
+
+    var saveFetchedPlaylists = function saveFetchedPlaylists(data) {
+      dispatch((0,_store_Playlists_Playlists_action__WEBPACK_IMPORTED_MODULE_4__.setPlaylists)(data));
+    };
+
+    if (savedPlaylists !== null) {
+      // console.log("Loading playlists from redux");
+      setPlaylists(savedPlaylists);
+    }
+
+    if (savedPlaylists === null) {
+      // console.log("Fetching playlists from db");
+      fetchPlaylists();
+    }
+  }, [savedPlaylists, dispatch]);
+
+  var handleSetCurrentPlaylistId = function handleSetCurrentPlaylistId(playlistId) {
+    dispatch((0,_store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_3__.setCurrentPlaylistId)(playlistId));
   };
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    fetchPlaylists();
-  }, []);
-
-  var handleSetCurrentPlaylist = function handleSetCurrentPlaylist(playlistId) {
-    dispatch((0,_store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_3__.setCurrentPlaylist)(playlistId));
-  }; // useEffect(() => {
-  //     console.log(playlists);
-  // }, [playlists]);
-
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
     className: "playlists-list",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h3", {
       children: "Your playlists"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "list-items-container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("ul", {
         children: playlists.length !== 0 ? playlists.map(function (playlist) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("li", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("li", {
             className: "list-item",
             onClick: function onClick() {
-              return handleSetCurrentPlaylist(playlist["id"]);
+              return handleSetCurrentPlaylistId(playlist["id"]);
             },
             children: playlist["name"]
           }, playlist["name"]);
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
           children: "No playlists to display"
         })
       })
@@ -495,10 +532,10 @@ var SongList = function SongList() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.CurrentPlaylist;
   }),
-      currentPlaylist = _useSelector.currentPlaylist;
+      currentPlaylistId = _useSelector.currentPlaylistId;
 
-  var fetchPlaylist = function fetchPlaylist(currentPlaylist) {
-    fetch("/collections/playlist/" + currentPlaylist).then(function (response) {
+  var fetchPlaylist = function fetchPlaylist(currentPlaylistId) {
+    fetch("/collections/playlist/" + currentPlaylistId).then(function (response) {
       return response.json();
     }).then(function (data) {
       return setPlaylist(data);
@@ -506,18 +543,15 @@ var SongList = function SongList() {
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (currentPlaylist !== null) {
-      fetchPlaylist(currentPlaylist);
+    if (currentPlaylistId !== null) {
+      fetchPlaylist(currentPlaylistId);
     }
-  }, [currentPlaylist]);
+  }, [currentPlaylistId]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (playlist.length !== 0) {
       setSongs(playlist["tracks"]["items"]);
     }
-  }, [playlist]); // useEffect(() => {
-  //     console.log(songs);
-  // }, [songs]);
-
+  }, [playlist]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "song-list",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -583,6 +617,45 @@ var SongList = function SongList() {
 
 /***/ }),
 
+/***/ "./resources/react-app/src/store/Collections/Collections.reducer.js":
+/*!**************************************************************************!*\
+  !*** ./resources/react-app/src/store/Collections/Collections.reducer.js ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* eslint-disable import/no-anonymous-default-export */
+var getInitialState = function getInitialState() {
+  return {
+    collections: null
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getInitialState();
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "SET_COLLECTIONS":
+      var collections = action.collections;
+      return {
+        collections: collections
+      };
+
+    case "REMOVE_COLLECTIONS":
+      return getInitialState();
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.action.js":
 /*!*********************************************************************************!*\
   !*** ./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.action.js ***!
@@ -592,17 +665,26 @@ var SongList = function SongList() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_CURRENT_PLAYLIST_ID": () => (/* binding */ SET_CURRENT_PLAYLIST_ID),
 /* harmony export */   "SET_CURRENT_PLAYLIST": () => (/* binding */ SET_CURRENT_PLAYLIST),
 /* harmony export */   "REMOVE_CURRENT_PLAYLIST": () => (/* binding */ REMOVE_CURRENT_PLAYLIST),
+/* harmony export */   "setCurrentPlaylistId": () => (/* binding */ setCurrentPlaylistId),
 /* harmony export */   "setCurrentPlaylist": () => (/* binding */ setCurrentPlaylist),
 /* harmony export */   "removeCurrentPlaylist": () => (/* binding */ removeCurrentPlaylist)
 /* harmony export */ });
+var SET_CURRENT_PLAYLIST_ID = "SET_CURRENT_PLAYLIST_ID";
 var SET_CURRENT_PLAYLIST = "SET_CURRENT_PLAYLIST";
 var REMOVE_CURRENT_PLAYLIST = "REMOVE_CURRENT_PLAYLIST";
-var setCurrentPlaylist = function setCurrentPlaylist(playlistId) {
+var setCurrentPlaylistId = function setCurrentPlaylistId(playlistId) {
+  return {
+    type: SET_CURRENT_PLAYLIST_ID,
+    playlistId: playlistId
+  };
+};
+var setCurrentPlaylist = function setCurrentPlaylist(playlist) {
   return {
     type: SET_CURRENT_PLAYLIST,
-    playlistId: playlistId
+    playlist: playlist
   };
 };
 var removeCurrentPlaylist = function removeCurrentPlaylist() {
@@ -624,9 +706,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 /* eslint-disable import/no-anonymous-default-export */
 var getInitialState = function getInitialState() {
   return {
+    currentPlaylistId: null,
     currentPlaylist: null
   };
 };
@@ -636,11 +725,17 @@ var getInitialState = function getInitialState() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case "SET_CURRENT_PLAYLIST":
+    case "SET_CURRENT_PLAYLIST_ID":
       var playlistId = action.playlistId;
-      return {
-        currentPlaylist: playlistId
-      };
+      return _objectSpread(_objectSpread({}, state), {}, {
+        currentPlaylistId: playlistId
+      });
+
+    case "SET_CURRENT_PLAYLIST":
+      var playlist = action.playlist;
+      return _objectSpread(_objectSpread({}, state), {}, {
+        playlist: playlist
+      });
 
     default:
       return state;
@@ -649,39 +744,10 @@ var getInitialState = function getInitialState() {
 
 /***/ }),
 
-/***/ "./resources/react-app/src/store/Mode/Mode.action.js":
-/*!***********************************************************!*\
-  !*** ./resources/react-app/src/store/Mode/Mode.action.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SET_COLLECTIONS_MODE": () => (/* binding */ SET_COLLECTIONS_MODE),
-/* harmony export */   "SET_PLAYLISTS_MODE": () => (/* binding */ SET_PLAYLISTS_MODE),
-/* harmony export */   "setCollectionsMode": () => (/* binding */ setCollectionsMode),
-/* harmony export */   "setPlaylistsMode": () => (/* binding */ setPlaylistsMode)
-/* harmony export */ });
-var SET_COLLECTIONS_MODE = "SET_COLLECTIONS_MODE";
-var SET_PLAYLISTS_MODE = "SET_PLAYLISTS_MODE";
-var setCollectionsMode = function setCollectionsMode() {
-  return {
-    type: SET_COLLECTIONS_MODE
-  };
-};
-var setPlaylistsMode = function setPlaylistsMode() {
-  return {
-    type: SET_PLAYLISTS_MODE
-  };
-};
-
-/***/ }),
-
-/***/ "./resources/react-app/src/store/Mode/Mode.reducer.js":
-/*!************************************************************!*\
-  !*** ./resources/react-app/src/store/Mode/Mode.reducer.js ***!
-  \************************************************************/
+/***/ "./resources/react-app/src/store/DisplayMode/DisplayMode.reducer.js":
+/*!**************************************************************************!*\
+  !*** ./resources/react-app/src/store/DisplayMode/DisplayMode.reducer.js ***!
+  \**************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -692,8 +758,8 @@ __webpack_require__.r(__webpack_exports__);
 /* eslint-disable import/no-anonymous-default-export */
 var getInitialState = function getInitialState() {
   return {
-    collectionsMode: false,
-    playlistsMode: true
+    displayCollectionsMode: false,
+    displayPlaylistsMode: true
   };
 };
 
@@ -702,17 +768,158 @@ var getInitialState = function getInitialState() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case "SET_COLLECTIONS_MODE":
+    case "SET_DISPLAY_COLLECTIONS_MODE":
       return {
-        collectionsMode: true,
-        playlistsMode: false
+        displayCollectionsMode: true,
+        displayPlaylistsMode: false
       };
 
-    case "SET_PLAYLISTS_MODE":
+    case "SET_DISPLAY_PLAYLISTS_MODE":
       return {
-        collectionsMode: false,
-        playlistsMode: true
+        displayCollectionsMode: false,
+        displayPlaylistsMode: true
       };
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/ListMode/ListMode.action.js":
+/*!*******************************************************************!*\
+  !*** ./resources/react-app/src/store/ListMode/ListMode.action.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_LIST_COLLECTIONS_MODE": () => (/* binding */ SET_LIST_COLLECTIONS_MODE),
+/* harmony export */   "SET_LIST_PLAYLISTS_MODE": () => (/* binding */ SET_LIST_PLAYLISTS_MODE),
+/* harmony export */   "setListCollectionsMode": () => (/* binding */ setListCollectionsMode),
+/* harmony export */   "setListPlaylistsMode": () => (/* binding */ setListPlaylistsMode)
+/* harmony export */ });
+var SET_LIST_COLLECTIONS_MODE = "SET_LIST_COLLECTIONS_MODE";
+var SET_LIST_PLAYLISTS_MODE = "SET_LIST_PLAYLISTS_MODE";
+var setListCollectionsMode = function setListCollectionsMode() {
+  return {
+    type: SET_LIST_COLLECTIONS_MODE
+  };
+};
+var setListPlaylistsMode = function setListPlaylistsMode() {
+  return {
+    type: SET_LIST_PLAYLISTS_MODE
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/ListMode/ListMode.reducer.js":
+/*!********************************************************************!*\
+  !*** ./resources/react-app/src/store/ListMode/ListMode.reducer.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* eslint-disable import/no-anonymous-default-export */
+var getInitialState = function getInitialState() {
+  return {
+    listCollectionsMode: false,
+    listPlaylistsMode: true
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getInitialState();
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "SET_LIST_COLLECTIONS_MODE":
+      return {
+        listCollectionsMode: true,
+        listPlaylistsMode: false
+      };
+
+    case "SET_LIST_PLAYLISTS_MODE":
+      return {
+        listCollectionsMode: false,
+        listPlaylistsMode: true
+      };
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/Playlists/Playlists.action.js":
+/*!*********************************************************************!*\
+  !*** ./resources/react-app/src/store/Playlists/Playlists.action.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_PLAYLISTS": () => (/* binding */ SET_PLAYLISTS),
+/* harmony export */   "REMOVE_PLAYLISTS": () => (/* binding */ REMOVE_PLAYLISTS),
+/* harmony export */   "setPlaylists": () => (/* binding */ setPlaylists),
+/* harmony export */   "removePlaylists": () => (/* binding */ removePlaylists)
+/* harmony export */ });
+var SET_PLAYLISTS = "SET_PLAYLISTS";
+var REMOVE_PLAYLISTS = "REMOVE_PLAYLISTS";
+var setPlaylists = function setPlaylists(playlists) {
+  return {
+    type: SET_PLAYLISTS,
+    playlists: playlists
+  };
+};
+var removePlaylists = function removePlaylists() {
+  return {
+    type: REMOVE_PLAYLISTS
+  };
+};
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/Playlists/Playlists.reducer.js":
+/*!**********************************************************************!*\
+  !*** ./resources/react-app/src/store/Playlists/Playlists.reducer.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* eslint-disable import/no-anonymous-default-export */
+var getInitialState = function getInitialState() {
+  return {
+    playlists: null
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : getInitialState();
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case "SET_PLAYLISTS":
+      var playlists = action.playlists;
+      return {
+        playlists: playlists
+      };
+
+    case "REMOVE_PLAYLISTS":
+      return getInitialState();
 
     default:
       return state;
@@ -732,15 +939,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _Mode_Mode_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Mode/Mode.reducer */ "./resources/react-app/src/store/Mode/Mode.reducer.js");
-/* harmony import */ var _CurrentPlaylist_CurrentPlaylist_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CurrentPlaylist/CurrentPlaylist.reducer */ "./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.reducer.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _DisplayMode_DisplayMode_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DisplayMode/DisplayMode.reducer */ "./resources/react-app/src/store/DisplayMode/DisplayMode.reducer.js");
+/* harmony import */ var _ListMode_ListMode_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListMode/ListMode.reducer */ "./resources/react-app/src/store/ListMode/ListMode.reducer.js");
+/* harmony import */ var _CurrentPlaylist_CurrentPlaylist_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CurrentPlaylist/CurrentPlaylist.reducer */ "./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.reducer.js");
+/* harmony import */ var _Playlists_Playlists_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Playlists/Playlists.reducer */ "./resources/react-app/src/store/Playlists/Playlists.reducer.js");
+/* harmony import */ var _Collections_Collections_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Collections/Collections.reducer */ "./resources/react-app/src/store/Collections/Collections.reducer.js");
 
 
 
-var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
-  Mode: _Mode_Mode_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  CurrentPlaylist: _CurrentPlaylist_CurrentPlaylist_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+
+
+
+var rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
+  Collections: _Collections_Collections_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
+  CurrentPlaylist: _CurrentPlaylist_CurrentPlaylist_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  DisplayMode: _DisplayMode_DisplayMode_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  ListMode: _ListMode_ListMode_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  Playlists: _Playlists_Playlists_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);
 
@@ -807,7 +1023,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".collections-list {\n  background-color: #0e1115;\n  height: 100%;\n}\n\n.collections-list h3 {\n  color: #e5e5e5;\n}\n\n.collections-list ul {\n  padding: 0;\n}\n\n.collections-list a {\n  text-decoration: none;\n  color: #bbbbbb;\n}\n\n.collections-list a:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list li {\n  list-style-type: none;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".collections-list {\n  background-color: #0e1115;\n  height: 100%;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.collections-list ::-webkit-scrollbar {\n  width: 0.5rem;\n  /* Remove scrollbar space */\n  background: transparent;\n  /* Optional: just make scrollbar invisible */\n  padding-top: 4rem;\n}\n\n.collections-list ::-webkit-scrollbar-thumb {\n  background-color: #333333;\n  border-radius: 5px;\n}\n\n.collections-list ::-webkit-scrollbar-thumb:hover {\n  background-color: #424242;\n}\n\n.collections-list h3 {\n  color: #e5e5e5;\n}\n\n.collections-list ul {\n  padding: 0;\n  margin: 0;\n}\n\n.collections-list a {\n  text-decoration: none;\n  color: #bbbbbb;\n}\n\n.collections-list a:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-item {\n  list-style-type: none;\n  text-decoration: none;\n  color: #bbbbbb;\n  cursor: pointer;\n}\n\n.collections-list .list-item:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-items-container {\n  position: relative;\n  overflow-y: scroll;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\n\n.collections-list .list-items-container ul {\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

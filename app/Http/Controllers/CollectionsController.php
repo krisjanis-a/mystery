@@ -4,26 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-require __DIR__.'/../../Utils/createSpotifyApiInstance.php';
+require __DIR__ . "/../../Utils/createSpotifyApiInstance.php";
 
 class CollectionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware("auth");
     }
 
     public function index()
     {
-        return view('collections.index');
-    }    
-    
+        return view("collections.index");
+    }
+
     public function fetchAllPlaylists()
     {
-        // Load users Spotify playlists
+        // Load user's Spotify playlists
         $spotifyAPI = createSpotifyApiInstance();
-        $userPlaylists = $spotifyAPI->getMyPlaylists(['limit'=>50])->items;
-        
+        $userPlaylists = $spotifyAPI->getMyPlaylists(["limit" => 50])->items;
+
         return $userPlaylists;
     }
 
@@ -37,10 +37,13 @@ class CollectionsController extends Controller
         return $playlist;
     }
 
-    // Open collection display page
-    public function showCollection()
+    // Load user's collections
+    public function fetchAllCollections()
     {
-
     }
-    
+
+    // Create collection
+    public function createCollection()
+    {
+    }
 }
