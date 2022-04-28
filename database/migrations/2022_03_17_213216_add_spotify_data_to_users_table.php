@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,10 +12,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('spotify_access_token')->nullable();
-            $table->string('spotify_refresh_token')->nullable();
-            $table->string('scope')->nullable();
+        Schema::table("users", function (Blueprint $table) {
+            $table->string("spotify_access_token")->nullable();
+            $table->string("spotify_refresh_token")->nullable();
+            $table->string("spotify_scope")->nullable();
         });
     }
 
@@ -27,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table("users", function (Blueprint $table) {
             //
         });
     }

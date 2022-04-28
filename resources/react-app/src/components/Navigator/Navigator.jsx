@@ -1,6 +1,7 @@
 import React from "react";
-import CollectionsList from "./components/CollectionsList/CollectionsList";
-import PlaylistsList from "./components/PlaylistsList/PlaylistsList";
+import "./Navigator.css";
+import CollectionsList from "../CollectionsList/CollectionsList";
+import PlaylistsList from "../PlaylistsList/PlaylistsList";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setListCollectionsMode,
@@ -23,7 +24,7 @@ const Navigator = () => {
                 <div className="lists-container collections-list-container">
                     <CollectionsList />
                     <button
-                        className="change-mode-button"
+                        className="button_main change_mode_button"
                         onClick={() => handleChangeMode(setListPlaylistsMode())}
                     >
                         Show Spotify playlists
@@ -36,7 +37,7 @@ const Navigator = () => {
                 <div className="lists-container playlists-list-container">
                     <PlaylistsList />
                     <button
-                        className="change-mode-button"
+                        className="button_main change_mode_button"
                         onClick={() =>
                             handleChangeMode(setListCollectionsMode())
                         }

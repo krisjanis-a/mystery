@@ -28,7 +28,7 @@ Collections page
     Tasks:
     DONE - Implement two display modes in React app
     DONE - Add redux store
-    - create necessary things for collections in database
+    DONE - create necessary things for collections in database
     - create collections view & edit features
         - add songs
         - delete songs
@@ -89,6 +89,12 @@ Settings page
 |===============|
 | Tasks & TODOs |
 |===============|
+
+    - Steps
+        0. Plan out all application
+        1. Build front-end
+        2. Build back-end
+        3. Connect front-end and back-end
 
     - Overall tasks
         - login, register, forgot password pages -> fix styling to app design

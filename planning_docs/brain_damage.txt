@@ -1,3 +1,5 @@
+
+
 <- CollectionsApp ->
 
     When you click collections it opens a SPA (single page application).
@@ -22,6 +24,8 @@
 
     The modes of Navigator and Viewer are separated, i.e. Navigator can be used to browse collections in collection mode and Viewer can be displaying a playlist in playlist mode.
 
+
+
 <- Navigator ->
 
 Navigator contains:
@@ -40,11 +44,47 @@ Navigator->PlaylistMode
         - playlist info is displayed in Header
         - playlist songs are loaded into SongList
 
-
-
 Navigator->CollectionMode
 
     When Navigator is in collection mode it displays a list of user's collections from database.
 
+    A option to create blank collection appears above collection names.
+
+    When user clicks on collection name:
+        - the Viewer is set to playlist mode
+        - collection info is displayed in Header
+        - collection songs are loaded into SongList
+
+
+
 <- Viewer ->
 
+Viewer contains:
+    - Header
+    - SongList
+
+    Header contains:
+    - Cover image of playlist / collection
+    - Name of playlist / collection
+    - Creator name / ID (depending whether playlist / collection)
+    - Description
+
+    SongList contains:
+    - Options bar
+    - List of Songs
+
+Viewer->PlaylistMode
+
+    Header contains:
+    - Create collection button
+
+Viewer->CollectionMode
+
+    Header contains:
+    - Save to Spotify [playlists] button
+    - Delete collection button
+    - Share collection button
+    - Create new collection [using the loaded one as template]
+
+
+<- Creator ->

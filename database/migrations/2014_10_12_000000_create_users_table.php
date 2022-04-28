@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,23 +12,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create("users", function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('name');
-            $table->string('surname');
-            $table->date('birthdate')->nullable();
-            $table->string('country')->nullable();
-            $table->json('artists')->nullable();
-            $table->json('albums')->nullable();
-            $table->json('songs')->nullable();
-            $table->json('collections')->nullable();
-            $table->json('followers')->nullable();
-            $table->json('following')->nullable();
-            $table->string('profile_image')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string("username")->unique();
+            $table->string("email")->unique();
+            $table->string("password");
+            $table->string("name");
+            $table->string("surname");
+            $table->date("birthdate")->nullable();
+            $table->string("country")->nullable();
+            $table->string("profile_image")->nullable();
+            $table->timestamp("email_verified_at")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -42,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists("users");
     }
 };

@@ -10,6 +10,12 @@ class Song extends Model
     use HasFactory;
 
     protected $name;
+    protected $spotifyId;
+    protected $artist;
+    protected $album;
+    protected $duration;
+    protected $year;
+    protected $genre;
 
     public function setName($name)
     {

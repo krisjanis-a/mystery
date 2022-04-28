@@ -1,62 +1,128 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCreatingCollection } from "../../store/CreatingCollection/CreatingCollection.action";
+import { showCreator } from "../../store/Creator/Creator.action";
+import {
+    addSongs,
+    setName,
+} from "../../store/NewCollection/NewCollection.action";
 import "./Header.css";
 
 const Header = () => {
-    const [playlist, setPlaylist] = useState([]);
-
-    const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
-
-    const fetchPlaylist = (currentPlaylist) => {
-        fetch("/collections/playlist/" + currentPlaylist)
-            .then((response) => response.json())
-            .then((data) => setPlaylist(data));
-    };
-
-    const showInfo = () => {
-        console.log(playlist);
-    };
-
-    useEffect(() => {
-        if (currentPlaylistId !== null) {
-            fetchPlaylist(currentPlaylistId);
-        }
-    }, [currentPlaylistId]);
+    const { displayCollectionsMode, displayPlaylistsMode } = useSelector(
+        (state) => state.DisplayMode
+    );
 
     return (
         <div className="header">
-            {playlist.length !== 0 ? (
-                <>
-                    <div className="image-container">
-                        <img
-                            className="image"
-                            src={playlist["images"][0]["url"]}
-                            alt=""
-                        />
-                    </div>
-                    <div className="info-container">
-                        <h2>{playlist["name"]}</h2>
-                        <h4>
-                            Created by
-                            {playlist["owner"]["display_name"]
-                                ? playlist["owner"]["display_name"]
-                                : playlist["owner"]["id"]}
-                        </h4>
-                        <p>
-                            {playlist["description"].length !== 0
-                                ? playlist["description"]
-                                : "No description available"}
-                        </p>
-                    </div>
-                </>
-            ) : (
-                <>
-                    <h3>Select a playlist or collection</h3>
-                </>
-            )}
-            {/* <button onClick={() => showInfo()}>show info</button> */}
+            {displayPlaylistsMode && <HeaderPlaylist />}
+            {displayCollectionsMode && <HeaderCollection />}
         </div>
     );
 };
 
 export default Header;
+
+const HeaderPlaylist = () => {
+    const dispatch = useDispatch();
+    const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
+
+    const currentTracks = useSelector(
+        (state) => state.CurrentPlaylist.currentPlaylist.tracks
+    );
+
+    const handleCreateCollection = () => {
+        dispatch(setCreatingCollection(true));
+        dispatch(setName());
+        dispatch(showCreator());
+        dispatch(addSongs(currentTracks.items));
+    };
+
+    return (
+        <div className="header_playlist">
+            {Object.keys(currentPlaylist).length !== 0 ? (
+                <>
+                    <div className="header_left">
+                        <div className="image_container">
+                            <img
+                                className="image"
+                                src={currentPlaylist["images"][0]["url"]}
+                                alt=""
+                            />
+                        </div>
+                        <div className="info_container">
+                            <h2>{currentPlaylist["name"]}</h2>
+                            <h4>
+                                Created by&nbsp;
+                                {currentPlaylist["owner"]["display_name"]
+                                    ? currentPlaylist["owner"]["display_name"]
+                                    : currentPlaylist["owner"]["id"]}
+                            </h4>
+                            <p>
+                                {currentPlaylist["description"].length !== 0
+                                    ? currentPlaylist["description"]
+                                    : "No description available"}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="header_right">
+                        <div className="buttons_container">
+                            <button
+                                className="button_main"
+                                onClick={() => handleCreateCollection()}
+                            >
+                                Create Collection
+                            </button>
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <Alert text={"Select a playlist or collection"} />
+            )}
+        </div>
+    );
+};
+
+const HeaderCollection = () => {
+    const currentCollection = useSelector((state) => state.CurrentCollection);
+
+    return (
+        <div className="header_collection">
+            {Object.keys(currentCollection).length !== 0 ? (
+                <>
+                    <div className="image-container">
+                        <img
+                            className="image"
+                            src={currentCollection["images"][0]["url"]}
+                            alt=""
+                        />
+                    </div>
+                    <div className="info-container">
+                        <h2>{currentCollection["name"]}</h2>
+                        <h4>
+                            Created by&nbsp;
+                            {currentCollection["owner"]["display_name"]
+                                ? currentCollection["owner"]["display_name"]
+                                : currentCollection["owner"]["id"]}
+                        </h4>
+                        <p>
+                            {currentCollection["description"].length !== 0
+                                ? currentCollection["description"]
+                                : "No description available"}
+                        </p>
+                    </div>
+                </>
+            ) : (
+                <Alert text={"Select a playlist or collection"} />
+            )}
+        </div>
+    );
+};
+
+const Alert = ({ text }) => {
+    return (
+        <>
+            <h4>{text}</h4>
+        </>
+    );
+};

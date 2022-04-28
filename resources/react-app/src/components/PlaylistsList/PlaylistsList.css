@@ -35,6 +35,7 @@
 .playlists-list ul {
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
 .playlists-list .list-item {
@@ -42,6 +43,9 @@
   text-decoration: none;
   color: #bbbbbb;
   cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .playlists-list .list-item:hover {

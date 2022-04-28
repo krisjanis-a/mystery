@@ -1,4 +1,4 @@
-.song-list {
+.song_list {
     background-color: #181818;
     border-bottom: 1px solid #9f8d69;
     border-top: 1px solid #929292;
@@ -25,7 +25,7 @@
         background-color: #424242;
     }
 
-    .songs-empty-alert {
+    .songs_empty_alert {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -35,7 +35,16 @@
     }
 }
 
-.song-list-table-wrapper {
+.options_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 1rem;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.song_list_table_wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -43,23 +52,24 @@
     overflow-y: scroll;
 }
 
-.song-list-table-container {
+.song_list_table_container {
     position: absolute;
     width: 100%;
     height: 100%;
 }
 
-.song-list-table {
+.song_list_table {
     width: 100%;
-    height: 100%;
+    // height: 100%;
+    height: fit-content;
 
-    .song-position {
+    .song_position {
         text-align: right;
         padding-right: 1rem;
         width: 3rem;
     }
 
-    .table-head {
+    .table_head {
         background-color: #181818;
         position: sticky;
         top: 0;
@@ -80,4 +90,10 @@
             border-bottom: 1px solid #2a2a2a;
         }
     }
+
+    // .table_body {
+    //     tr {
+    //         height: 4rem;
+    //     }
+    // }
 }

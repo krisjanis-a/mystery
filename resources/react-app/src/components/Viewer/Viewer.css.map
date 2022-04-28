@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,IAAI;EACZ,IAAI,EAAE,QAAQ;CACjB",
+    "sources": [
+        "Viewer.scss"
+    ],
+    "names": [],
+    "file": "Viewer.css"
+}

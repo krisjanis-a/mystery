@@ -1,25 +1,44 @@
-.song-item {
+.song_item {
+  color: #e5e5e5;
+  height: 2.5rem;
+}
+
+.song_item .title,
+.song_item .album,
+.song_item .artist,
+.song_item .date_added {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song_item a {
+  text-decoration: none;
   color: #e5e5e5;
 }
 
-.song-item td {
+.song_item a:hover {
+  text-shadow: 0px 0px 1px #e5e5e5;
+}
+
+.song_item td {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
-.song-item .song-position {
+.song_item .song_position {
   font-family: "Azeret Mono", monospace;
   font-size: 0.75rem;
   font-weight: 300;
 }
 
-.song-item .album,
-.song-item .artist,
-.song-item .date-added {
+.song_item .album,
+.song_item .artist,
+.song_item .date_added {
   font-weight: 300;
 }
 
-.song-item button {
+.song_item button {
   background: none;
   border: none;
   height: -webkit-fit-content;
@@ -31,12 +50,16 @@
   cursor: default;
 }
 
-.song-item button i {
+.song_item button i {
   color: #9d9d9d;
   cursor: pointer;
 }
 
-.song-item button i:hover {
+.song_item button i:hover {
   color: #e5e5e5;
+}
+
+.song_item:hover {
+  background-color: rgba(0, 0, 0, 0.247);
 }
 /*# sourceMappingURL=Song.css.map */

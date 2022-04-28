@@ -28,6 +28,7 @@
     ul {
         padding: 0;
         margin: 0;
+        width: 100%;
     }
 
     .list-item {
@@ -35,6 +36,10 @@
         text-decoration: none;
         color: #bbbbbb;
         cursor: pointer;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .list-item:hover {

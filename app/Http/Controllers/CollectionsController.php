@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 require __DIR__ . "/../../Utils/createSpotifyApiInstance.php";
+require __DIR__ . "/../../../write_to_log.php";
 
 class CollectionsController extends Controller
 {
@@ -42,8 +44,40 @@ class CollectionsController extends Controller
     {
     }
 
+    // Get collection data
+
+    public function fetchCollection()
+    {
+        return "Collection";
+    }
+
     // Create collection
-    public function createCollection()
+    public function createCollection(Request $request)
+    {
+        $data = json_decode($request->getContent());
+        $name = $data->name;
+        $creator = $data->creator;
+        $songs = $data->songs;
+
+        $creatorId = $creator;
+
+        DB::table("collections")->update([
+            "name" => $name,
+            "creator_id" => $creatorId,
+        ]);
+
+        DB::table("songs")->insert([]);
+
+        return $data->songs;
+    }
+
+    // Update collection
+    public function udpateCollection()
+    {
+    }
+
+    // Delete collection
+    public function deleteCollection()
     {
     }
 }

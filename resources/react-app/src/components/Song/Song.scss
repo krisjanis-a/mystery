@@ -1,12 +1,31 @@
-.song-item {
+.song_item {
     color: #e5e5e5;
+    height: 2.5rem;
+
+    .title,
+    .album,
+    .artist,
+    .date_added {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    a {
+        text-decoration: none;
+        color: #e5e5e5;
+    }
+
+    a:hover {
+        text-shadow: 0px 0px 1px #e5e5e5;
+    }
 
     td {
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
     }
 
-    .song-position {
+    .song_position {
         font-family: "Azeret Mono", monospace;
         font-size: 0.75rem;
         font-weight: 300;
@@ -14,7 +33,7 @@
 
     .album,
     .artist,
-    .date-added {
+    .date_added {
         font-weight: 300;
     }
 
@@ -34,4 +53,8 @@
             color: #e5e5e5;
         }
     }
+}
+
+.song_item:hover {
+    background-color: rgba(0, 0, 0, 0.247);
 }

@@ -10,6 +10,19 @@ const PlaylistsList = () => {
     const savedPlaylists = useSelector((state) => state.Playlists.playlists);
     const [playlists, setPlaylists] = useState([]);
 
+    const { displayCollectionsMode } = useSelector(
+        (state) => state.DisplayMode
+    );
+
+    //! Select playlist automatically
+    const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
+
+    useEffect(() => {
+        if (currentPlaylistId === null && playlists.length !== 0) {
+            dispatch(setCurrentPlaylistId(playlists[0]["id"]));
+        }
+    }, [currentPlaylistId, playlists, dispatch]);
+
     useEffect(() => {
         const fetchPlaylists = () => {
             fetch("/collections/playlists")
@@ -36,7 +49,10 @@ const PlaylistsList = () => {
 
     const handleClickOnPlaylist = (playlistId) => {
         dispatch(setCurrentPlaylistId(playlistId));
-        dispatch(setDisplayPlaylistsMode());
+
+        if (displayCollectionsMode) {
+            dispatch(setDisplayPlaylistsMode());
+        }
     };
 
     return (
@@ -54,7 +70,7 @@ const PlaylistsList = () => {
                                         handleClickOnPlaylist(playlist["id"])
                                     }
                                 >
-                                    {playlist["name"]}
+                                    <span>{playlist["name"]}</span>
                                 </li>
                             );
                         })

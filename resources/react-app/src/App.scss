@@ -1,0 +1,57 @@
+.collections-app-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+}
+
+.button_main {
+    background-color: #181f29;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem;
+    color: #e5e5e5;
+    border: 1px solid #9f8d69;
+    border-radius: 0.5rem;
+}
+
+.button_main:hover {
+    box-shadow: 0 0 1px 0.5px #9f8d69d0;
+}
+
+.button_icon {
+    background: none;
+    border: none;
+    color: #9f8d69;
+}
+
+.button_icon:hover {
+    i {
+        text-shadow: 0 0 1px #9f8d69, 0 0 2px #9f8d69, 0 0 3px #9f8d69;
+    }
+    -webkit-text-stroke: 1px #9f8d69;
+}
+
+/* .collections-list-container, */
+/* .playlists-list-container */
+.lists-container {
+    background-color: #0e1115;
+
+    width: 20%;
+    min-width: 12rem;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    border-bottom: 1px solid #9f8d69;
+    border-top: 1px solid #9f8d69;
+    border-right: 1px solid #9f8d69;
+}
+
+.header-songlist-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+}

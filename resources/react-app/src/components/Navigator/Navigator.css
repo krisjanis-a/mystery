@@ -1,0 +1,11 @@
+.navigator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+}
+
+.navigator .change_mode_button {
+  margin: 1rem auto;
+}
+/*# sourceMappingURL=Navigator.css.map */

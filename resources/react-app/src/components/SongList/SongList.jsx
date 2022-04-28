@@ -5,49 +5,37 @@ import "./SongList.css";
 
 const SongList = () => {
     const [songs, setSongs] = useState([]);
-    const [playlist, setPlaylist] = useState([]);
 
-    const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
-
-    const fetchPlaylist = (currentPlaylistId) => {
-        fetch("/collections/playlist/" + currentPlaylistId)
-            .then((response) => response.json())
-            .then((data) => setPlaylist(data));
-    };
+    const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
 
     useEffect(() => {
-        if (currentPlaylistId !== null) {
-            fetchPlaylist(currentPlaylistId);
+        if (Object.keys(currentPlaylist).length !== 0) {
+            setSongs(currentPlaylist["tracks"]["items"]);
         }
-    }, [currentPlaylistId]);
-
-    useEffect(() => {
-        if (playlist.length !== 0) {
-            setSongs(playlist["tracks"]["items"]);
-        }
-    }, [playlist]);
+    }, [currentPlaylist]);
 
     return (
-        <div className="song-list">
-            <div className="song-list-table-wrapper">
-                <div className="song-list-table-container">
-                    <table className="song-list-table">
-                        <thead className="table-head">
+        <div className="song_list">
+            {songs.length !== 0 && <OptionsBar />}
+            <div className="song_list_table_wrapper">
+                <div className="song_list_table_container">
+                    <table className="song_list_table">
+                        <thead className="table_head">
                             <tr>
-                                <th className="song-position">#</th>
+                                <th className="song_position">#</th>
                                 <th className="title">Title</th>
                                 <th className="album">Album</th>
                                 <th className="artist">Artist</th>
-                                <th className="date-added">Date Added</th>
-                                <th className="like-button"></th>
+                                <th className="date_added">Date Added</th>
+                                <th className="like_button"></th>
                                 <th className="duration">Duration</th>
-                                <th className="options-button"></th>
-                                <th className="remove-button"></th>
-                                <th className="drag-button"></th>
+                                <th className="options_button"></th>
+                                <th className="remove_button"></th>
+                                <th className="drag_button"></th>
                             </tr>
                         </thead>
 
-                        <tbody className="table-body">
+                        <tbody className="table_body">
                             {songs.length !== 0 && (
                                 <>
                                     {songs.map((song, index) => {
@@ -65,7 +53,7 @@ const SongList = () => {
                     </table>
                 </div>
             </div>
-            <div className="songs-empty-alert">
+            <div className="songs_empty_alert">
                 {songs.length === 0 && <h3>Nothing to display</h3>}
             </div>
         </div>
@@ -73,3 +61,14 @@ const SongList = () => {
 };
 
 export default SongList;
+
+const OptionsBar = () => {
+    return (
+        <div className="options_bar">
+            <div className="current_filters"></div>
+            <button className="button_main">
+                Filter <i className="fa-solid fa-caret-down"></i>
+            </button>
+        </div>
+    );
+};

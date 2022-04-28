@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 const getInitialState = () => ({
     currentPlaylistId: null,
-    currentPlaylist: null,
+    currentPlaylist: {},
 });
 
 export default (state = getInitialState(), action) => {
@@ -17,7 +17,7 @@ export default (state = getInitialState(), action) => {
             const { playlist } = action;
             return {
                 ...state,
-                playlist: playlist,
+                currentPlaylist: playlist,
             };
 
         default:

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -13,11 +12,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('collection_user', function (Blueprint $table) {
-            $table->id();
-            $table->integer('collection_id');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::create("artists", function (Blueprint $table) {
+            $table->id("artist_id");
+            $table->string("name");
+            $table->integer("spotify_id");
+            $table->string("spotify_url");
+            $table->string("spotify_api_href");
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collection_user');
+        Schema::dropIfExists("artists");
     }
 };

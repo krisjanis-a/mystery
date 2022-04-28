@@ -1,0 +1,194 @@
+.creator {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.705);
+
+    .container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        flex: 1 1 auto;
+
+        height: 90%;
+
+        padding: 3rem;
+        background-color: #0e1115;
+        border: 2px solid #e5e5e5;
+        border-radius: 2rem;
+    }
+
+    .collection_name,
+    .collection_creator {
+        padding: 0.5rem;
+    }
+
+    .close_creator {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.25rem;
+    }
+
+    .close_creator:hover {
+        i {
+            text-shadow: 0 0 1px #880000c0, 0 0 2px #880000c0, 0 0 3px #880000c0;
+        }
+        -webkit-text-stroke: 0.5px #880000c0;
+    }
+
+    .creator_song_list {
+        background-color: #181818;
+        border-bottom: 1px solid #9f8d69;
+        border-top: 1px solid #929292;
+        margin: 1rem 0;
+
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+
+        ::-webkit-scrollbar {
+            width: 0.5rem; /* Remove scrollbar space */
+            background: transparent; /* Optional: just make scrollbar invisible */
+            padding-top: 4rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #333333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #424242;
+        }
+
+        .creator_songs_empty_alert {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: #e5e5e5;
+        }
+
+        .creator_song_list_table_wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            overflow-y: scroll;
+        }
+
+        .creator_song_list_table_container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .creator_song_list_table {
+            width: 100%;
+            // height: 100%;
+            height: fit-content;
+            position: absolute;
+
+            .song_position {
+                text-align: right;
+                padding-right: 1rem;
+                width: 3rem;
+            }
+
+            .table_head {
+                background-color: #181818;
+                position: sticky;
+                top: 0;
+                font-size: 0.75rem;
+
+                width: 100%;
+
+                color: #c4c4c4;
+                text-transform: uppercase;
+
+                tr {
+                    width: 100%;
+                }
+
+                th {
+                    padding-top: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    border-bottom: 1px solid #2a2a2a;
+                }
+            }
+        }
+
+        .creator_song_item {
+            color: #e5e5e5;
+            height: 2rem;
+
+            .title,
+            .album,
+            .artist,
+            .date_added {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            a {
+                text-decoration: none;
+                color: #e5e5e5;
+            }
+
+            a:hover {
+                text-shadow: 0px 0px 1px #e5e5e5;
+            }
+
+            td {
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
+            }
+
+            .song_position {
+                font-family: "Azeret Mono", monospace;
+                font-size: 0.75rem;
+                font-weight: 300;
+            }
+
+            .album,
+            .artist,
+            .date_added {
+                font-weight: 300;
+            }
+
+            button {
+                background: none;
+                border: none;
+                height: fit-content;
+                width: fit-content;
+                cursor: default;
+
+                i {
+                    color: #9d9d9d;
+                    cursor: pointer;
+                }
+
+                i:hover {
+                    color: #e5e5e5;
+                }
+            }
+        }
+
+        .creator_song_item:hover {
+            background-color: rgba(0, 0, 0, 0.247);
+        }
+    }
+}

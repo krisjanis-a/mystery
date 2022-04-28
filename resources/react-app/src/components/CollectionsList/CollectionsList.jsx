@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setCreatingCollection } from "../../store/CreatingCollection/CreatingCollection.action";
+import { showCreator } from "../../store/Creator/Creator.action";
+import { setName } from "../../store/NewCollection/NewCollection.action";
 import "./CollectionsList.css";
 
 const CollectionList = () => {
+    const dispatch = useDispatch();
+
     const [collections, setCollections] = useState([]);
 
     const handleClickCollection = () => {};
 
-    const handleClickCreateCollection = () => {};
+    const handleClickCreateCollection = () => {
+        dispatch(setCreatingCollection(true));
+        dispatch(setName());
+        dispatch(showCreator());
+    };
 
     return (
         <div className="collections-list">

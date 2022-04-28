@@ -1,0 +1,218 @@
+.creator {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(0, 0, 0, 0.705);
+}
+
+.creator .container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  height: 90%;
+  padding: 3rem;
+  background-color: #0e1115;
+  border: 2px solid #e5e5e5;
+  border-radius: 2rem;
+}
+
+.creator .collection_name,
+.creator .collection_creator {
+  padding: 0.5rem;
+}
+
+.creator .close_creator {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.25rem;
+}
+
+.creator .close_creator:hover {
+  -webkit-text-stroke: 0.5px #880000c0;
+}
+
+.creator .close_creator:hover i {
+  text-shadow: 0 0 1px #880000c0, 0 0 2px #880000c0, 0 0 3px #880000c0;
+}
+
+.creator .creator_song_list {
+  background-color: #181818;
+  border-bottom: 1px solid #9f8d69;
+  border-top: 1px solid #929292;
+  margin: 1rem 0;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.creator .creator_song_list ::-webkit-scrollbar {
+  width: 0.5rem;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+  padding-top: 4rem;
+}
+
+.creator .creator_song_list ::-webkit-scrollbar-thumb {
+  background-color: #333333;
+  border-radius: 5px;
+}
+
+.creator .creator_song_list ::-webkit-scrollbar-thumb:hover {
+  background-color: #424242;
+}
+
+.creator .creator_song_list .creator_songs_empty_alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #e5e5e5;
+}
+
+.creator .creator_song_list .creator_song_list_table_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.creator .creator_song_list .creator_song_list_table_container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.creator .creator_song_list .creator_song_list_table {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: absolute;
+}
+
+.creator .creator_song_list .creator_song_list_table .song_position {
+  text-align: right;
+  padding-right: 1rem;
+  width: 3rem;
+}
+
+.creator .creator_song_list .creator_song_list_table .table_head {
+  background-color: #181818;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  font-size: 0.75rem;
+  width: 100%;
+  color: #c4c4c4;
+  text-transform: uppercase;
+}
+
+.creator .creator_song_list .creator_song_list_table .table_head tr {
+  width: 100%;
+}
+
+.creator .creator_song_list .creator_song_list_table .table_head th {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.creator .creator_song_list .creator_song_item {
+  color: #e5e5e5;
+  height: 2rem;
+}
+
+.creator .creator_song_list .creator_song_item .title,
+.creator .creator_song_list .creator_song_item .album,
+.creator .creator_song_list .creator_song_item .artist,
+.creator .creator_song_list .creator_song_item .date_added {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.creator .creator_song_list .creator_song_item a {
+  text-decoration: none;
+  color: #e5e5e5;
+}
+
+.creator .creator_song_list .creator_song_item a:hover {
+  text-shadow: 0px 0px 1px #e5e5e5;
+}
+
+.creator .creator_song_list .creator_song_item td {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.creator .creator_song_list .creator_song_item .song_position {
+  font-family: "Azeret Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+
+.creator .creator_song_list .creator_song_item .album,
+.creator .creator_song_list .creator_song_item .artist,
+.creator .creator_song_list .creator_song_item .date_added {
+  font-weight: 300;
+}
+
+.creator .creator_song_list .creator_song_item button {
+  background: none;
+  border: none;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: default;
+}
+
+.creator .creator_song_list .creator_song_item button i {
+  color: #9d9d9d;
+  cursor: pointer;
+}
+
+.creator .creator_song_list .creator_song_item button i:hover {
+  color: #e5e5e5;
+}
+
+.creator .creator_song_list .creator_song_item:hover {
+  background-color: rgba(0, 0, 0, 0.247);
+}
+/*# sourceMappingURL=Creator.css.map */
