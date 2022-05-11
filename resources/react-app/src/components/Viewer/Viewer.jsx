@@ -4,10 +4,14 @@ import Header from "../Header/Header";
 import SongList from "../SongList/SongList";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPlaylist } from "../../store/CurrentPlaylist/CurrentPlaylist.action";
+import { setCurrentCollection } from "../../store/CurrentCollection/CurrentCollection.action";
 
 const Viewer = () => {
     const dispatch = useDispatch();
     const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
+    const { currentCollectionId } = useSelector(
+        (state) => state.CurrentCollection
+    );
 
     useEffect(() => {
         const fetchPlaylist = (currentPlaylistId) => {
@@ -20,6 +24,18 @@ const Viewer = () => {
             fetchPlaylist(currentPlaylistId);
         }
     }, [currentPlaylistId, dispatch]);
+
+    useEffect(() => {
+        const fetchCollection = (currentCollectionId) => {
+            fetch("/collections/collection/fetch/" + currentCollectionId)
+                .then((response) => response.json())
+                .then((data) => dispatch(setCurrentCollection(data)));
+        };
+
+        if (currentCollectionId !== null) {
+            fetchCollection(currentCollectionId);
+        }
+    }, [currentCollectionId, dispatch]);
 
     return (
         <div className="viewer">

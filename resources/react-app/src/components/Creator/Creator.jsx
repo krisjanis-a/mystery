@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCreatingCollection } from "../../store/CreatingCollection/CreatingCollection.action";
 import { hideCreator } from "../../store/Creator/Creator.action";
 import "./Creator.css";
 import msToTime from "../../utils/msToTime";
-import { resetNewCollection } from "../../store/NewCollection/NewCollection.action";
+import {
+    resetNewCollection,
+    setCreatorIdNewCollection,
+    setCreatorNewCollection,
+    setDescriptionNewCollection,
+} from "../../store/NewCollection/NewCollection.action";
+import { setNameNewCollection } from "../../store/NewCollection/NewCollection.action";
 
 const Creator = () => {
     const dispatch = useDispatch();
 
     const { User } = useSelector((state) => state);
     const { NewCollection } = useSelector((state) => state);
+
+    useEffect(() => {
+        dispatch(setCreatorNewCollection(User.username));
+        dispatch(setCreatorIdNewCollection(User.id));
+    }, [User, dispatch]);
 
     const handleHideCreator = () => {
         dispatch(hideCreator());
@@ -53,13 +64,34 @@ const Creator = () => {
                 <h3>Create New Collection</h3>
 
                 <div className="collection_name">
-                    <label htmlFor="collection_name">Name: </label>
-                    <input type="text" id="collection_name" />
+                    <label htmlFor="collection_name">Name:&nbsp;</label>
+                    <input
+                        type="text"
+                        id="collection_name"
+                        onChange={(e) =>
+                            dispatch(setNameNewCollection(e.target.value))
+                        }
+                    />
                 </div>
 
                 <div className="collection_creator">
-                    <label htmlFor="collection_creator">Creator: </label>
-                    <span id="collection_creator">{User.name}</span>
+                    <label htmlFor="collection_creator">Creator:&nbsp;</label>
+                    <span id="collection_creator">{User.username}</span>
+                </div>
+
+                <div className="collection_description">
+                    <label htmlFor="collection_description">
+                        Description:&nbsp;
+                    </label>
+                    <input
+                        type="text"
+                        id="collection_description"
+                        onChange={(e) =>
+                            dispatch(
+                                setDescriptionNewCollection(e.target.value)
+                            )
+                        }
+                    />
                 </div>
 
                 <CreatorSongList />

@@ -7,12 +7,31 @@ const SongList = () => {
     const [songs, setSongs] = useState([]);
 
     const { currentPlaylist } = useSelector((state) => state.CurrentPlaylist);
+    const { currentCollection } = useSelector(
+        (state) => state.CurrentCollection
+    );
+    const { displayCollectionsMode, displayPlaylistsMode } = useSelector(
+        (state) => state.DisplayMode
+    );
 
     useEffect(() => {
-        if (Object.keys(currentPlaylist).length !== 0) {
-            setSongs(currentPlaylist["tracks"]["items"]);
+        if (displayPlaylistsMode) {
+            if (Object.keys(currentPlaylist).length !== 0) {
+                setSongs(currentPlaylist["tracks"]["items"]);
+            }
         }
-    }, [currentPlaylist]);
+
+        if (displayCollectionsMode) {
+            if (Object.keys(currentCollection).length !== 0) {
+                setSongs(currentCollection["songs"]);
+            }
+        }
+    }, [
+        currentPlaylist,
+        currentCollection,
+        displayPlaylistsMode,
+        displayCollectionsMode,
+    ]);
 
     return (
         <div className="song_list">

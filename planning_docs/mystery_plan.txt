@@ -100,7 +100,6 @@ Settings page
         - login, register, forgot password pages -> fix styling to app design
 
     - Stuff to learn / implement
-
         - Connect user account to facebook account
         - Build and learn how to continiously integrate spotify player
 

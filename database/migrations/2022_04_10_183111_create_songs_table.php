@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create("songs", function (Blueprint $table) {
             $table->id("song_id");
             $table->string("name");
-            $table->unsignedBigInteger("spotify_id");
+            $table->string("spotify_id");
             $table->timestamps();
         });
     }

@@ -60,7 +60,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_Creator_Creator_action__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../store/Creator/Creator.action */ "./resources/react-app/src/store/Creator/Creator.action.js");
 /* harmony import */ var _store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../store/NewCollection/NewCollection.action */ "./resources/react-app/src/store/NewCollection/NewCollection.action.js");
 /* harmony import */ var _CollectionsList_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CollectionsList.css */ "./resources/react-app/src/components/CollectionsList/CollectionsList.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_Collections_Collections_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/Collections/Collections.action */ "./resources/react-app/src/store/Collections/Collections.action.js");
+/* harmony import */ var _store_CurrentCollection_CurrentCollection_action__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store/CurrentCollection/CurrentCollection.action */ "./resources/react-app/src/store/CurrentCollection/CurrentCollection.action.js");
+/* harmony import */ var _store_DisplayMode_DisplayMode_action__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store/DisplayMode/DisplayMode.action */ "./resources/react-app/src/store/DisplayMode/DisplayMode.action.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -82,45 +85,86 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 var CollectionList = function CollectionList() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var savedCollections = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.Collections.collections;
+  });
+
+  var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.DisplayMode;
+  }),
+      displayPlaylistsMode = _useSelector.displayPlaylistsMode;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       collections = _useState2[0],
       setCollections = _useState2[1];
 
-  var handleClickCollection = function handleClickCollection() {};
+  var handleClickCollection = function handleClickCollection(collectionId) {
+    dispatch((0,_store_CurrentCollection_CurrentCollection_action__WEBPACK_IMPORTED_MODULE_7__.setCurrentCollectionId)(collectionId));
+
+    if (displayPlaylistsMode) {
+      dispatch((0,_store_DisplayMode_DisplayMode_action__WEBPACK_IMPORTED_MODULE_8__.setDisplayCollectionsMode)());
+    }
+  };
 
   var handleClickCreateCollection = function handleClickCreateCollection() {
     dispatch((0,_store_CreatingCollection_CreatingCollection_action__WEBPACK_IMPORTED_MODULE_2__.setCreatingCollection)(true));
-    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__.setName)());
+    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__.setNameNewCollection)());
     dispatch((0,_store_Creator_Creator_action__WEBPACK_IMPORTED_MODULE_3__.showCreator)());
   };
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchCollections = function fetchCollections() {
+      fetch("/collections/collections").then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        setCollections(data);
+        saveFetchedCollections(data);
+      });
+    };
+
+    var saveFetchedCollections = function saveFetchedCollections(data) {
+      dispatch((0,_store_Collections_Collections_action__WEBPACK_IMPORTED_MODULE_6__.setCollections)(data));
+    };
+
+    if (savedCollections !== null) {
+      // console.log("Loading collections from redux");
+      setCollections(savedCollections);
+    }
+
+    if (savedCollections === null) {
+      // console.log("Fetching collections from db");
+      fetchCollections();
+    }
+  }, [savedCollections, dispatch]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
     className: "collections-list",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h3", {
       children: "Your collections"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
       className: "list-items-container",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
-        children: [collections.length !== 0 ? collections.map(function (index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("ul", {
+        children: [collections.length !== 0 ? collections.map(function (collection) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("li", {
             className: "list-item",
             onClick: function onClick() {
-              return handleClickCollection();
+              return handleClickCollection(collection.collection_id);
             },
-            children: ["Collection name ", index]
-          }, index);
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            children: collection.name
+          }, collection.name + collection.collection_id);
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("p", {
           children: "No collections to display"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("li", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("li", {
           className: "list-item",
           onClick: function onClick() {
             return handleClickCreateCollection();
           },
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("i", {
             className: "fa-solid fa-circle-plus"
           }), "Create collection"]
         })]
@@ -164,6 +208,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var Creator = function Creator() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
@@ -176,6 +221,11 @@ var Creator = function Creator() {
     return state;
   }),
       NewCollection = _useSelector2.NewCollection;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_6__.setCreatorNewCollection)(User.username));
+    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_6__.setCreatorIdNewCollection)(User.id));
+  }, [User, dispatch]);
 
   var handleHideCreator = function handleHideCreator() {
     dispatch((0,_store_Creator_Creator_action__WEBPACK_IMPORTED_MODULE_3__.hideCreator)());
@@ -218,19 +268,34 @@ var Creator = function Creator() {
         className: "collection_name",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
           htmlFor: "collection_name",
-          children: "Name: "
+          children: "Name:\xA0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
           type: "text",
-          id: "collection_name"
+          id: "collection_name",
+          onChange: function onChange(e) {
+            return dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_6__.setNameNewCollection)(e.target.value));
+          }
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "collection_creator",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
           htmlFor: "collection_creator",
-          children: "Creator: "
+          children: "Creator:\xA0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
           id: "collection_creator",
-          children: User.name
+          children: User.username
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        className: "collection_description",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
+          htmlFor: "collection_description",
+          children: "Description:\xA0"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
+          type: "text",
+          id: "collection_description",
+          onChange: function onChange(e) {
+            return dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_6__.setDescriptionNewCollection)(e.target.value));
+          }
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(CreatorSongList, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         className: "button_main save_collection",
@@ -436,9 +501,8 @@ var HeaderPlaylist = function HeaderPlaylist() {
 
   var handleCreateCollection = function handleCreateCollection() {
     dispatch((0,_store_CreatingCollection_CreatingCollection_action__WEBPACK_IMPORTED_MODULE_2__.setCreatingCollection)(true));
-    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__.setName)());
     dispatch((0,_store_Creator_Creator_action__WEBPACK_IMPORTED_MODULE_3__.showCreator)());
-    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__.addSongs)(currentTracks.items));
+    dispatch((0,_store_NewCollection_NewCollection_action__WEBPACK_IMPORTED_MODULE_4__.addSongsNewCollection)(currentTracks.items));
   };
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
@@ -492,19 +556,12 @@ var HeaderCollection = function HeaderCollection() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "image-container",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-          className: "image",
-          src: currentCollection["images"][0]["url"],
+          className: "image" // src={currentCollection["image"]}
+          ,
           alt: ""
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "info-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-          children: currentCollection["name"]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("h4", {
-          children: ["Created by\xA0", currentCollection["owner"]["display_name"] ? currentCollection["owner"]["display_name"] : currentCollection["owner"]["id"]]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-          children: currentCollection["description"].length !== 0 ? currentCollection["description"] : "No description available"
-        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "info-container"
       })]
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Alert, {
       text: "Select a playlist or collection"
@@ -643,7 +700,7 @@ var PlaylistsList = function PlaylistsList() {
   var _useSelector = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.DisplayMode;
   }),
-      displayCollectionsMode = _useSelector.displayCollectionsMode; //! Select playlist automatically
+      displayCollectionsMode = _useSelector.displayCollectionsMode; //! START - Select playlist automatically
 
 
   var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
@@ -655,7 +712,8 @@ var PlaylistsList = function PlaylistsList() {
     if (currentPlaylistId === null && playlists.length !== 0) {
       dispatch((0,_store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_3__.setCurrentPlaylistId)(playlists[0]["id"]));
     }
-  }, [currentPlaylistId, playlists, dispatch]);
+  }, [currentPlaylistId, playlists, dispatch]); //! END
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchPlaylists = function fetchPlaylists() {
       fetch("/collections/playlists").then(function (response) {
@@ -884,11 +942,30 @@ var SongList = function SongList() {
   }),
       currentPlaylist = _useSelector.currentPlaylist;
 
+  var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.CurrentCollection;
+  }),
+      currentCollection = _useSelector2.currentCollection;
+
+  var _useSelector3 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.DisplayMode;
+  }),
+      displayCollectionsMode = _useSelector3.displayCollectionsMode,
+      displayPlaylistsMode = _useSelector3.displayPlaylistsMode;
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (Object.keys(currentPlaylist).length !== 0) {
-      setSongs(currentPlaylist["tracks"]["items"]);
+    if (displayPlaylistsMode) {
+      if (Object.keys(currentPlaylist).length !== 0) {
+        setSongs(currentPlaylist["tracks"]["items"]);
+      }
     }
-  }, [currentPlaylist]);
+
+    if (displayCollectionsMode) {
+      if (Object.keys(currentCollection).length !== 0) {
+        setSongs(currentCollection["songs"]);
+      }
+    }
+  }, [currentPlaylist, currentCollection, displayPlaylistsMode, displayCollectionsMode]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "song_list",
     children: [songs.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(OptionsBar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
@@ -986,7 +1063,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SongList_SongList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SongList/SongList */ "./resources/react-app/src/components/SongList/SongList.jsx");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../store/CurrentPlaylist/CurrentPlaylist.action */ "./resources/react-app/src/store/CurrentPlaylist/CurrentPlaylist.action.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_CurrentCollection_CurrentCollection_action__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/CurrentCollection/CurrentCollection.action */ "./resources/react-app/src/store/CurrentCollection/CurrentCollection.action.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -1004,6 +1083,11 @@ var Viewer = function Viewer() {
   }),
       currentPlaylistId = _useSelector.currentPlaylistId;
 
+  var _useSelector2 = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
+    return state.CurrentCollection;
+  }),
+      currentCollectionId = _useSelector2.currentCollectionId;
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchPlaylist = function fetchPlaylist(currentPlaylistId) {
       fetch("/collections/playlist/" + currentPlaylistId).then(function (response) {
@@ -1017,16 +1101,59 @@ var Viewer = function Viewer() {
       fetchPlaylist(currentPlaylistId);
     }
   }, [currentPlaylistId, dispatch]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchCollection = function fetchCollection(currentCollectionId) {
+      fetch("/collections/collection/fetch/" + currentCollectionId).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        return dispatch((0,_store_CurrentCollection_CurrentCollection_action__WEBPACK_IMPORTED_MODULE_6__.setCurrentCollection)(data));
+      });
+    };
+
+    if (currentCollectionId !== null) {
+      fetchCollection(currentCollectionId);
+    }
+  }, [currentCollectionId, dispatch]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
     className: "viewer",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "header-songlist-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SongList_SongList__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SongList_SongList__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
     })
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Viewer);
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/Collections/Collections.action.js":
+/*!*************************************************************************!*\
+  !*** ./resources/react-app/src/store/Collections/Collections.action.js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_COLLECTIONS": () => (/* binding */ SET_COLLECTIONS),
+/* harmony export */   "REMOVE_COLLECTIONS": () => (/* binding */ REMOVE_COLLECTIONS),
+/* harmony export */   "setCollections": () => (/* binding */ setCollections),
+/* harmony export */   "removeCollections": () => (/* binding */ removeCollections)
+/* harmony export */ });
+var SET_COLLECTIONS = "SET_COLLECTIONS";
+var REMOVE_COLLECTIONS = "REMOVE_COLLECTIONS";
+var setCollections = function setCollections(collections) {
+  return {
+    type: SET_COLLECTIONS,
+    collections: collections
+  };
+};
+var removeCollections = function removeCollections() {
+  return {
+    type: REMOVE_COLLECTIONS
+  };
+};
 
 /***/ }),
 
@@ -1195,6 +1322,45 @@ var getInitialState = function getInitialState() {
       return state;
   }
 });
+
+/***/ }),
+
+/***/ "./resources/react-app/src/store/CurrentCollection/CurrentCollection.action.js":
+/*!*************************************************************************************!*\
+  !*** ./resources/react-app/src/store/CurrentCollection/CurrentCollection.action.js ***!
+  \*************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_CURRENT_COLLECTION_ID": () => (/* binding */ SET_CURRENT_COLLECTION_ID),
+/* harmony export */   "SET_CURRENT_COLLECTION": () => (/* binding */ SET_CURRENT_COLLECTION),
+/* harmony export */   "REMOVE_CURRENT_COLLECTION": () => (/* binding */ REMOVE_CURRENT_COLLECTION),
+/* harmony export */   "setCurrentCollectionId": () => (/* binding */ setCurrentCollectionId),
+/* harmony export */   "setCurrentCollection": () => (/* binding */ setCurrentCollection),
+/* harmony export */   "removeCurrentCollection": () => (/* binding */ removeCurrentCollection)
+/* harmony export */ });
+var SET_CURRENT_COLLECTION_ID = "SET_CURRENT_COLLECTION_ID";
+var SET_CURRENT_COLLECTION = "SET_CURRENT_COLLECTION";
+var REMOVE_CURRENT_COLLECTION = "REMOVE_CURRENT_COLLECTION";
+var setCurrentCollectionId = function setCurrentCollectionId(collectionId) {
+  return {
+    type: SET_CURRENT_COLLECTION_ID,
+    collectionId: collectionId
+  };
+};
+var setCurrentCollection = function setCurrentCollection(collection) {
+  return {
+    type: SET_CURRENT_COLLECTION,
+    collection: collection
+  };
+};
+var removeCurrentCollection = function removeCurrentCollection() {
+  return {
+    type: REMOVE_CURRENT_COLLECTION
+  };
+};
 
 /***/ }),
 
@@ -1603,61 +1769,70 @@ var getInitialState = function getInitialState() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "ADD_SONG": () => (/* binding */ ADD_SONG),
-/* harmony export */   "ADD_SONGS": () => (/* binding */ ADD_SONGS),
-/* harmony export */   "SET_NAME": () => (/* binding */ SET_NAME),
-/* harmony export */   "SET_DESCRIPTION": () => (/* binding */ SET_DESCRIPTION),
-/* harmony export */   "SET_CREATOR": () => (/* binding */ SET_CREATOR),
-/* harmony export */   "CLEAR_SONGS": () => (/* binding */ CLEAR_SONGS),
+/* harmony export */   "ADD_SONG_NEW_COLLECTION": () => (/* binding */ ADD_SONG_NEW_COLLECTION),
+/* harmony export */   "ADD_SONGS_NEW_COLLECTION": () => (/* binding */ ADD_SONGS_NEW_COLLECTION),
+/* harmony export */   "SET_NAME_NEW_COLLECTION": () => (/* binding */ SET_NAME_NEW_COLLECTION),
+/* harmony export */   "SET_DESCRIPTION_NEW_COLLECTION": () => (/* binding */ SET_DESCRIPTION_NEW_COLLECTION),
+/* harmony export */   "SET_CREATOR_NEW_COLLECTION": () => (/* binding */ SET_CREATOR_NEW_COLLECTION),
+/* harmony export */   "SET_CREATOR_ID_NEW_COLLECTION": () => (/* binding */ SET_CREATOR_ID_NEW_COLLECTION),
+/* harmony export */   "CLEAR_SONGS_NEW_COLLECTION": () => (/* binding */ CLEAR_SONGS_NEW_COLLECTION),
 /* harmony export */   "RESET_NEW_COLLECTION": () => (/* binding */ RESET_NEW_COLLECTION),
-/* harmony export */   "addSong": () => (/* binding */ addSong),
-/* harmony export */   "addSongs": () => (/* binding */ addSongs),
-/* harmony export */   "setName": () => (/* binding */ setName),
-/* harmony export */   "setCreator": () => (/* binding */ setCreator),
-/* harmony export */   "setDescription": () => (/* binding */ setDescription),
-/* harmony export */   "clearSongs": () => (/* binding */ clearSongs),
+/* harmony export */   "addSongNewCollection": () => (/* binding */ addSongNewCollection),
+/* harmony export */   "addSongsNewCollection": () => (/* binding */ addSongsNewCollection),
+/* harmony export */   "setNameNewCollection": () => (/* binding */ setNameNewCollection),
+/* harmony export */   "setCreatorNewCollection": () => (/* binding */ setCreatorNewCollection),
+/* harmony export */   "setCreatorIdNewCollection": () => (/* binding */ setCreatorIdNewCollection),
+/* harmony export */   "setDescriptionNewCollection": () => (/* binding */ setDescriptionNewCollection),
+/* harmony export */   "clearSongsNewCollection": () => (/* binding */ clearSongsNewCollection),
 /* harmony export */   "resetNewCollection": () => (/* binding */ resetNewCollection)
 /* harmony export */ });
-var ADD_SONG = "ADD_SONG";
-var ADD_SONGS = "ADD_SONGS";
-var SET_NAME = "SET_NAME";
-var SET_DESCRIPTION = "SET_DESCRIPTION";
-var SET_CREATOR = "SET_CREATOR";
-var CLEAR_SONGS = "CLEAR_SONGS";
+var ADD_SONG_NEW_COLLECTION = "ADD_SONG_NEW_COLLECTION";
+var ADD_SONGS_NEW_COLLECTION = "ADD_SONGS_NEW_COLLECTION";
+var SET_NAME_NEW_COLLECTION = "SET_NAME_NEW_COLLECTION";
+var SET_DESCRIPTION_NEW_COLLECTION = "SET_DESCRIPTION_NEW_COLLECTION";
+var SET_CREATOR_NEW_COLLECTION = "SET_CREATOR_NEW_COLLECTION";
+var SET_CREATOR_ID_NEW_COLLECTION = "SET_CREATOR_ID_NEW_COLLECTION";
+var CLEAR_SONGS_NEW_COLLECTION = "CLEAR_SONGS_NEW_COLLECTION";
 var RESET_NEW_COLLECTION = "RESET_NEW_COLLECTION";
-var addSong = function addSong(song) {
+var addSongNewCollection = function addSongNewCollection(song) {
   return {
-    type: ADD_SONG,
+    type: ADD_SONG_NEW_COLLECTION,
     song: song
   };
 };
-var addSongs = function addSongs(songs) {
+var addSongsNewCollection = function addSongsNewCollection(songs) {
   return {
-    type: ADD_SONGS,
+    type: ADD_SONGS_NEW_COLLECTION,
     songs: songs
   };
 };
-var setName = function setName(name) {
+var setNameNewCollection = function setNameNewCollection(name) {
   return {
-    type: SET_NAME,
+    type: SET_NAME_NEW_COLLECTION,
     name: name
   };
 };
-var setCreator = function setCreator(creator) {
+var setCreatorNewCollection = function setCreatorNewCollection(creator) {
   return {
-    type: SET_CREATOR,
+    type: SET_CREATOR_NEW_COLLECTION,
     creator: creator
   };
 };
-var setDescription = function setDescription(description) {
+var setCreatorIdNewCollection = function setCreatorIdNewCollection(creatorId) {
   return {
-    type: SET_DESCRIPTION,
+    type: SET_CREATOR_ID_NEW_COLLECTION,
+    creatorId: creatorId
+  };
+};
+var setDescriptionNewCollection = function setDescriptionNewCollection(description) {
+  return {
+    type: SET_DESCRIPTION_NEW_COLLECTION,
     description: description
   };
 };
-var clearSongs = function clearSongs() {
+var clearSongsNewCollection = function clearSongsNewCollection() {
   return {
-    type: CLEAR_SONGS
+    type: CLEAR_SONGS_NEW_COLLECTION
   };
 };
 var resetNewCollection = function resetNewCollection() {
@@ -1702,6 +1877,7 @@ var getInitialState = function getInitialState() {
   return {
     name: null,
     creator: null,
+    creatorId: null,
     description: null,
     songs: []
   };
@@ -1712,7 +1888,7 @@ var getInitialState = function getInitialState() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case "ADD_SONG":
+    case "ADD_SONG_NEW_COLLECTION":
       {
         var song = action.song;
         var updatedSongs = state.songs.map(function (song) {
@@ -1724,7 +1900,7 @@ var getInitialState = function getInitialState() {
         });
       }
 
-    case "ADD_SONGS":
+    case "ADD_SONGS_NEW_COLLECTION":
       {
         var songs = action.songs;
 
@@ -1739,7 +1915,7 @@ var getInitialState = function getInitialState() {
         });
       }
 
-    case "SET_NAME":
+    case "SET_NAME_NEW_COLLECTION":
       {
         var name = action.name;
         return _objectSpread(_objectSpread({}, state), {}, {
@@ -1747,7 +1923,7 @@ var getInitialState = function getInitialState() {
         });
       }
 
-    case "SET_CREATOR":
+    case "SET_CREATOR_NEW_COLLECTION":
       {
         var creator = action.creator;
         return _objectSpread(_objectSpread({}, state), {}, {
@@ -1755,7 +1931,15 @@ var getInitialState = function getInitialState() {
         });
       }
 
-    case "SET_DESCRIPTION":
+    case "SET_CREATOR_ID_NEW_COLLECTION":
+      {
+        var creatorId = action.creatorId;
+        return _objectSpread(_objectSpread({}, state), {}, {
+          creatorId: creatorId
+        });
+      }
+
+    case "SET_DESCRIPTION_NEW_COLLECTION":
       {
         var description = action.description;
         return _objectSpread(_objectSpread({}, state), {}, {
@@ -1763,7 +1947,7 @@ var getInitialState = function getInitialState() {
         });
       }
 
-    case "CLEAR_SONGS":
+    case "CLEAR_SONGS_NEW_COLLECTION":
       {
         return _objectSpread(_objectSpread({}, state), {}, {
           songs: []
@@ -1902,6 +2086,28 @@ var getInitialState = function getInitialState() {
 
 /***/ }),
 
+/***/ "./resources/react-app/src/store/User/User.action.js":
+/*!***********************************************************!*\
+  !*** ./resources/react-app/src/store/User/User.action.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SET_USER": () => (/* binding */ SET_USER),
+/* harmony export */   "setUser": () => (/* binding */ setUser)
+/* harmony export */ });
+var SET_USER = "SET_USER";
+var setUser = function setUser(user) {
+  return {
+    type: SET_USER,
+    user: user
+  };
+};
+
+/***/ }),
+
 /***/ "./resources/react-app/src/store/User/User.reducer.js":
 /*!************************************************************!*\
   !*** ./resources/react-app/src/store/User/User.reducer.js ***!
@@ -1913,12 +2119,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /* eslint-disable import/no-anonymous-default-export */
 var getInitialState = function getInitialState() {
   return {
@@ -1936,7 +2136,8 @@ var getInitialState = function getInitialState() {
   switch (action.type) {
     case "SET_USER":
       {
-        return _objectSpread({}, state);
+        var user = action.user;
+        return user;
       }
 
     default:
@@ -41705,17 +41906,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App */ "./resources/react-app/src/App.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store/store */ "./resources/react-app/src/store/store.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _store_User_User_action__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/User/User.action */ "./resources/react-app/src/store/User/User.action.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 
 
-react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), {
-  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
+
+
+var getUser = function getUser() {
+  fetch("/collections/user/me").then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    _store_store__WEBPACK_IMPORTED_MODULE_4__["default"].dispatch((0,_store_User_User_action__WEBPACK_IMPORTED_MODULE_5__.setUser)(data));
+  });
+};
+
+getUser();
+react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), {
+  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
     store: _store_store__WEBPACK_IMPORTED_MODULE_4__["default"],
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], {})
   })
 }), document.getElementById("collections-app"));
 })();

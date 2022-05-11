@@ -50,6 +50,11 @@ Route::get("/artist/{artist}/album/{album}", [
 
 Route::get("/collections", [CollectionsController::class, "index"]);
 
+Route::get("/collections/user/me", [
+    CollectionsController::class,
+    "fetchUserMe",
+]);
+
 Route::get("/collections/playlists", [
     CollectionsController::class,
     "fetchAllPlaylists",

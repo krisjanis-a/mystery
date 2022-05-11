@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->id("collection_id");
             $table->string("name");
             $table->unsignedBigInteger("creator_id");
+            $table->text("description");
             $table->timestamps();
 
             $table

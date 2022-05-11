@@ -2,13 +2,14 @@
 const getInitialState = () => ({
     name: null,
     creator: null,
+    creatorId: null,
     description: null,
     songs: [],
 });
 
 export default (state = getInitialState(), action) => {
     switch (action.type) {
-        case "ADD_SONG": {
+        case "ADD_SONG_NEW_COLLECTION": {
             const { song } = action;
             const updatedSongs = state.songs.map((song) => song);
             updatedSongs.push(song);
@@ -19,7 +20,7 @@ export default (state = getInitialState(), action) => {
             };
         }
 
-        case "ADD_SONGS": {
+        case "ADD_SONGS_NEW_COLLECTION": {
             const { songs } = action;
             const updatedSongs = state.songs.map((song) => song);
             updatedSongs.push(...songs);
@@ -30,21 +31,30 @@ export default (state = getInitialState(), action) => {
             };
         }
 
-        case "SET_NAME": {
+        case "SET_NAME_NEW_COLLECTION": {
             const { name } = action;
             return {
                 ...state,
                 name: name,
             };
         }
-        case "SET_CREATOR": {
+        case "SET_CREATOR_NEW_COLLECTION": {
             const { creator } = action;
             return {
                 ...state,
                 creator: creator,
             };
         }
-        case "SET_DESCRIPTION": {
+
+        case "SET_CREATOR_ID_NEW_COLLECTION": {
+            const { creatorId } = action;
+            return {
+                ...state,
+                creatorId: creatorId,
+            };
+        }
+
+        case "SET_DESCRIPTION_NEW_COLLECTION": {
             const { description } = action;
             return {
                 ...state,
@@ -52,7 +62,7 @@ export default (state = getInitialState(), action) => {
             };
         }
 
-        case "CLEAR_SONGS": {
+        case "CLEAR_SONGS_NEW_COLLECTION": {
             return {
                 ...state,
                 songs: [],

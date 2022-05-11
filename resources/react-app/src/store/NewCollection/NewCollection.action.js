@@ -1,38 +1,44 @@
-export const ADD_SONG = "ADD_SONG";
-export const ADD_SONGS = "ADD_SONGS";
-export const SET_NAME = "SET_NAME";
-export const SET_DESCRIPTION = "SET_DESCRIPTION";
-export const SET_CREATOR = "SET_CREATOR";
-export const CLEAR_SONGS = "CLEAR_SONGS";
+export const ADD_SONG_NEW_COLLECTION = "ADD_SONG_NEW_COLLECTION";
+export const ADD_SONGS_NEW_COLLECTION = "ADD_SONGS_NEW_COLLECTION";
+export const SET_NAME_NEW_COLLECTION = "SET_NAME_NEW_COLLECTION";
+export const SET_DESCRIPTION_NEW_COLLECTION = "SET_DESCRIPTION_NEW_COLLECTION";
+export const SET_CREATOR_NEW_COLLECTION = "SET_CREATOR_NEW_COLLECTION";
+export const SET_CREATOR_ID_NEW_COLLECTION = "SET_CREATOR_ID_NEW_COLLECTION";
+export const CLEAR_SONGS_NEW_COLLECTION = "CLEAR_SONGS_NEW_COLLECTION";
 export const RESET_NEW_COLLECTION = "RESET_NEW_COLLECTION";
 
-export const addSong = (song) => ({
-    type: ADD_SONG,
+export const addSongNewCollection = (song) => ({
+    type: ADD_SONG_NEW_COLLECTION,
     song,
 });
 
-export const addSongs = (songs) => ({
-    type: ADD_SONGS,
+export const addSongsNewCollection = (songs) => ({
+    type: ADD_SONGS_NEW_COLLECTION,
     songs,
 });
 
-export const setName = (name) => ({
-    type: SET_NAME,
+export const setNameNewCollection = (name) => ({
+    type: SET_NAME_NEW_COLLECTION,
     name,
 });
 
-export const setCreator = (creator) => ({
-    type: SET_CREATOR,
+export const setCreatorNewCollection = (creator) => ({
+    type: SET_CREATOR_NEW_COLLECTION,
     creator,
 });
 
-export const setDescription = (description) => ({
-    type: SET_DESCRIPTION,
+export const setCreatorIdNewCollection = (creatorId) => ({
+    type: SET_CREATOR_ID_NEW_COLLECTION,
+    creatorId,
+});
+
+export const setDescriptionNewCollection = (description) => ({
+    type: SET_DESCRIPTION_NEW_COLLECTION,
     description,
 });
 
-export const clearSongs = () => ({
-    type: CLEAR_SONGS,
+export const clearSongsNewCollection = () => ({
+    type: CLEAR_SONGS_NEW_COLLECTION,
 });
 
 export const resetNewCollection = () => ({

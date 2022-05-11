@@ -14,7 +14,7 @@ const PlaylistsList = () => {
         (state) => state.DisplayMode
     );
 
-    //! Select playlist automatically
+    //! START - Select playlist automatically
     const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
 
     useEffect(() => {
@@ -22,6 +22,8 @@ const PlaylistsList = () => {
             dispatch(setCurrentPlaylistId(playlists[0]["id"]));
         }
     }, [currentPlaylistId, playlists, dispatch]);
+
+    //! END
 
     useEffect(() => {
         const fetchPlaylists = () => {

@@ -9,16 +9,27 @@ class Song extends Model
 {
     use HasFactory;
 
-    protected $name;
-    protected $spotifyId;
-    protected $artist;
-    protected $album;
-    protected $duration;
-    protected $year;
-    protected $genre;
+    protected $primaryKey = "song_id";
 
-    public function setName($name)
+    protected $fillable = [
+        "name",
+        "spotify_id",
+        "artist",
+        "album",
+        "duration",
+        "year",
+        "genre",
+    ];
+
+    public function collections()
     {
-        return $this->name = $name;
+        return $this->belongsToMany(
+            Collection::class,
+            "collection_song",
+            "collection_id",
+            "song_id"
+        )
+            ->withTimestamps()
+            ->withPivot("song_position");
     }
 }

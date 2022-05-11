@@ -9,9 +9,9 @@ const getInitialState = () => ({
 export default (state = getInitialState(), action) => {
     switch (action.type) {
         case "SET_USER": {
-            return {
-                ...state,
-            };
+            const { user } = action;
+
+            return user;
         }
 
         default:

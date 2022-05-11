@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create("collection_song", function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("collection_id");
-            $table->unsignedBigInteger("song_id");
-            $table->integer("song_position");
+            $table->unsignedBigInteger("collection_id")->default(null);
+            $table->unsignedBigInteger("song_id")->default(null);
+            $table->integer("song_position")->default(null);
             $table->timestamps();
 
             $table

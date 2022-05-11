@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCreatingCollection } from "../../store/CreatingCollection/CreatingCollection.action";
 import { showCreator } from "../../store/Creator/Creator.action";
-import {
-    addSongs,
-    setName,
-} from "../../store/NewCollection/NewCollection.action";
+import { addSongsNewCollection } from "../../store/NewCollection/NewCollection.action";
 import "./Header.css";
 
 const Header = () => {
@@ -33,9 +30,8 @@ const HeaderPlaylist = () => {
 
     const handleCreateCollection = () => {
         dispatch(setCreatingCollection(true));
-        dispatch(setName());
         dispatch(showCreator());
-        dispatch(addSongs(currentTracks.items));
+        dispatch(addSongsNewCollection(currentTracks.items));
     };
 
     return (
@@ -93,23 +89,23 @@ const HeaderCollection = () => {
                     <div className="image-container">
                         <img
                             className="image"
-                            src={currentCollection["images"][0]["url"]}
+                            // src={currentCollection["image"]}
                             alt=""
                         />
                     </div>
                     <div className="info-container">
-                        <h2>{currentCollection["name"]}</h2>
-                        <h4>
+                        {/* <h2>{currentCollection["collection"][0]["name"]}</h2> */}
+                        {/* <h4>
                             Created by&nbsp;
                             {currentCollection["owner"]["display_name"]
                                 ? currentCollection["owner"]["display_name"]
                                 : currentCollection["owner"]["id"]}
-                        </h4>
-                        <p>
+                        </h4> */}
+                        {/* <p>
                             {currentCollection["description"].length !== 0
                                 ? currentCollection["description"]
                                 : "No description available"}
-                        </p>
+                        </p> */}
                     </div>
                 </>
             ) : (
