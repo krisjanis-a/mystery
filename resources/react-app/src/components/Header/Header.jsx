@@ -80,7 +80,11 @@ const HeaderPlaylist = () => {
 };
 
 const HeaderCollection = () => {
-    const currentCollection = useSelector((state) => state.CurrentCollection);
+    const { currentCollection } = useSelector(
+        (state) => state.CurrentCollection
+    );
+
+    console.log(currentCollection);
 
     return (
         <div className="header_collection">
@@ -94,18 +98,16 @@ const HeaderCollection = () => {
                         />
                     </div>
                     <div className="info-container">
-                        {/* <h2>{currentCollection["collection"][0]["name"]}</h2> */}
-                        {/* <h4>
+                        <h2>{currentCollection.name}</h2>
+                        <h4>
                             Created by&nbsp;
-                            {currentCollection["owner"]["display_name"]
-                                ? currentCollection["owner"]["display_name"]
-                                : currentCollection["owner"]["id"]}
-                        </h4> */}
-                        {/* <p>
-                            {currentCollection["description"].length !== 0
+                            {currentCollection["creator_username"]}
+                        </h4>
+                        <p>
+                            {/* {currentCollection["description"].length !== 0
                                 ? currentCollection["description"]
-                                : "No description available"}
-                        </p> */}
+                                : "No description available"} */}
+                        </p>
                     </div>
                 </>
             ) : (

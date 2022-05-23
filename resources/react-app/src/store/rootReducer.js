@@ -13,6 +13,7 @@ import Filters from "./Filters/Filters.reducer";
 import FilteredPlaylist from "./FilteredPlaylist/FilteredPlaylist.reducer";
 import CreatingCollection from "./CreatingCollection/CreatingCollection.reducer";
 import User from "./User/User.reducer";
+import Loading from "./Loading/Loading.reducer";
 
 const rootReducer = combineReducers({
     Collections,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
     FilteredPlaylist,
     CreatingCollection,
     User,
+    Loading,
 });
 
 export default rootReducer;

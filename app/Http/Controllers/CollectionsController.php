@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Collection;
 use App\Models\CollectionSong;
 use App\Models\Song;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -75,17 +76,21 @@ class CollectionsController extends Controller
     public function fetchCollection($id)
     {
         $collection = Collection::where("collection_id", $id)->get();
+        $creator = User::where("id", $collection[0]->creator_id)->get();
         $songIds = CollectionSong::select("song_id")
             ->where("collection_id", $id)
             ->get()
             ->toArray();
 
+        $spotifyAPI = createSpotifyApiInstance();
+
+        // Prepare songs array
         $songs = array_map(
             fn($song_id) => array_merge(
-                Song::where("song_id", $song_id)
+                ...Song::where("song_id", $song_id)
                     ->get()
                     ->toArray(),
-                CollectionSong::select("song_position")
+                ...CollectionSong::select("song_position")
                     ->where("collection_id", $id)
                     ->where("song_id", $song_id)
                     ->get()
@@ -94,9 +99,18 @@ class CollectionsController extends Controller
             $songIds
         );
 
-        $response = new stdClass();
+        // Using References (with the & symbol) to modify each entry
+        foreach ($songs as &$songEntry) {
+            $songSpotifyData = $spotifyAPI->getTrack(
+                $songEntry["spotify_id"]
+            );
+            $songEntry["song_spotify_data"] = $songSpotifyData;
+        }
 
-        $response->collection = $collection;
+        // $response = new stdClass();
+
+        $response = $collection[0];
+        $response->creator_username = $creator[0]->username;
         $response->songs = $songs;
 
         return $response;

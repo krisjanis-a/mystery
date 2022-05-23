@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Viewer.css";
 import Header from "../Header/Header";
 import SongList from "../SongList/SongList";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPlaylist } from "../../store/CurrentPlaylist/CurrentPlaylist.action";
 import { setCurrentCollection } from "../../store/CurrentCollection/CurrentCollection.action";
+import { css } from "@emotion/react";
+import { ClipLoader } from "react-spinners";
 
 const Viewer = () => {
     const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const Viewer = () => {
         (state) => state.CurrentCollection
     );
 
+    // Fetch playlist
     useEffect(() => {
         const fetchPlaylist = (currentPlaylistId) => {
             fetch("/collections/playlist/" + currentPlaylistId)
@@ -25,6 +28,7 @@ const Viewer = () => {
         }
     }, [currentPlaylistId, dispatch]);
 
+    // Fetch collection
     useEffect(() => {
         const fetchCollection = (currentCollectionId) => {
             fetch("/collections/collection/fetch/" + currentCollectionId)
@@ -42,6 +46,7 @@ const Viewer = () => {
             <div className="header-songlist-container">
                 <Header />
                 <SongList />
+                {/* <ClipLoader loading={loadingViewer} /> */}
             </div>
         </div>
     );

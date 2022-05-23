@@ -1,4 +1,6 @@
 const formatDate = (unformattedDate) => {
+    // console.log(unformattedDate);
+    return;
     const formatter = new Intl.DateTimeFormat("en-us", {
         day: "numeric",
         month: "short",
@@ -9,6 +11,8 @@ const formatDate = (unformattedDate) => {
     const date = new Date(unformattedDate);
 
     const formattedDate = formatter.format(date);
+    // console.log(date);
+    // console.log(formattedDate);
 
     return formattedDate;
 };

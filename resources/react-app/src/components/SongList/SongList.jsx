@@ -17,14 +17,14 @@ const SongList = () => {
     useEffect(() => {
         if (displayPlaylistsMode) {
             if (Object.keys(currentPlaylist).length !== 0) {
-                setSongs(currentPlaylist["tracks"]["items"]);
-            }
+                setSongs(currentPlaylist["songs"]);
+            } else setSongs([]);
         }
 
         if (displayCollectionsMode) {
             if (Object.keys(currentCollection).length !== 0) {
                 setSongs(currentCollection["songs"]);
-            }
+            } else setSongs([]);
         }
     }, [
         currentPlaylist,
@@ -62,7 +62,11 @@ const SongList = () => {
                                             <Song
                                                 song={song}
                                                 index={index}
-                                                key={song["track"]["id"]}
+                                                key={
+                                                    song["song_spotify_data"][
+                                                        "id"
+                                                    ]
+                                                }
                                             />
                                         );
                                     })}

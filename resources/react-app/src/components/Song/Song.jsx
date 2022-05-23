@@ -3,8 +3,12 @@ import "./Song.css";
 import "../SongList/SongList.css";
 import msToTime from "../../utils/msToTime";
 import formatDate from "../../utils/formatDate";
+import { useSelector } from "react-redux";
 
 const Song = ({ song, index }) => {
+    const { displayCollectionsMode, displayPlaylistsMode } = useSelector(
+        (state) => state.DisplayMode
+    );
     const printSongInfo = () => {
         console.log(song);
     };
@@ -18,12 +22,14 @@ const Song = ({ song, index }) => {
                         <a
                             href={
                                 "artist/" +
-                                song["track"]["artists"][0]["name"] +
+                                song["song_spotify_data"]["artists"][0][
+                                    "name"
+                                ] +
                                 "/song/" +
-                                song["track"]["name"]
+                                song["song_spotify_data"]["name"]
                             }
                         >
-                            {song["track"]["name"]}
+                            {song["song_spotify_data"]["name"]}
                         </a>
                     }
                 </td>
@@ -32,44 +38,57 @@ const Song = ({ song, index }) => {
                         <a
                             href={
                                 "artist/" +
-                                song["track"]["artists"][0]["name"] +
+                                song["song_spotify_data"]["artists"][0][
+                                    "name"
+                                ] +
                                 "/album/" +
-                                song["track"]["album"]["name"]
+                                song["song_spotify_data"]["album"]["name"]
                             }
                         >
-                            {song["track"]["album"]["name"]}
+                            {song["song_spotify_data"]["album"]["name"]}
                         </a>
                     }
                 </td>
                 <td className="artist">
-                    {song["track"]["artists"].map((artist, index) => {
-                        if (index === 0) {
-                            return (
-                                <span key={artist.name}>
-                                    <a href={"artist/" + artist.name}>
-                                        {artist.name}
-                                    </a>
-                                </span>
-                            );
-                        } else {
-                            return (
-                                <span key={artist.name}>
-                                    <a href={"artist/" + artist.name}>
-                                        , {artist.name}
-                                    </a>
-                                </span>
-                            );
+                    {song["song_spotify_data"]["artists"].map(
+                        (artist, index) => {
+                            if (index === 0) {
+                                return (
+                                    <span key={artist.name}>
+                                        <a href={"artist/" + artist.name}>
+                                            {artist.name}
+                                        </a>
+                                    </span>
+                                );
+                            } else {
+                                return (
+                                    <span key={artist.name}>
+                                        <a href={"artist/" + artist.name}>
+                                            , {artist.name}
+                                        </a>
+                                    </span>
+                                );
+                            }
                         }
-                    })}
+                    )}
                 </td>
-                <td className="date_added">{formatDate(song["added_at"])}</td>
+                {displayPlaylistsMode && (
+                    <td className="date_added">
+                        {formatDate(song["added_at"])}
+                    </td>
+                )}
+                {displayCollectionsMode && (
+                    <td className="date_added">
+                        {formatDate(song["created_at"])}
+                    </td>
+                )}
                 <td className="like_button">
                     <button>
                         <i className="fa-solid fa-heart"></i>
                     </button>
                 </td>
                 <td className="duration">
-                    {msToTime(song["track"]["duration_ms"])}
+                    {msToTime(song["song_spotify_data"]["duration_ms"])}
                 </td>
                 <td className="options_button">
                     <button>

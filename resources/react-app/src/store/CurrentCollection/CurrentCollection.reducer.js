@@ -15,6 +15,7 @@ export default (state = getInitialState(), action) => {
 
         case "SET_CURRENT_COLLECTION":
             const { collection } = action;
+            // console.log(collection);
             return {
                 ...state,
                 currentCollection: collection,
