@@ -8,4 +8,14 @@
 .navigator .change_mode_button {
   margin: 1rem auto;
 }
+
+.list-items-container .loader_container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
 /*# sourceMappingURL=Navigator.css.map */

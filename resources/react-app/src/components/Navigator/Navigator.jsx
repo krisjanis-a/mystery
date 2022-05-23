@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navigator.css";
 import CollectionsList from "../CollectionsList/CollectionsList";
 import PlaylistsList from "../PlaylistsList/PlaylistsList";
@@ -7,6 +7,7 @@ import {
     setListCollectionsMode,
     setListPlaylistsMode,
 } from "../../store/ListMode/ListMode.action";
+import { setLoadingNavigatorTrue } from "../../store/Loading/Loading.action";
 
 const Navigator = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,10 @@ const Navigator = () => {
     const handleChangeMode = (setMode) => {
         dispatch(setMode);
     };
+
+    useEffect(() => {
+        dispatch(setLoadingNavigatorTrue());
+    }, [dispatch]);
 
     return (
         <div className="navigator">

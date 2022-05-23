@@ -4,12 +4,19 @@ import "./PlaylistsList.css";
 import { setCurrentPlaylistId } from "../../store/CurrentPlaylist/CurrentPlaylist.action";
 import { setPlaylists as savePlaylistsToRedux } from "../../store/Playlists/Playlists.action";
 import { setDisplayPlaylistsMode } from "../../store/DisplayMode/DisplayMode.action";
+import {
+    setLoadingNavigatorFalse,
+    setLoadingNavigatorTrue,
+} from "../../store/Loading/Loading.action";
+import { ClipLoader } from "react-spinners";
+import { loaderStyleNavigator } from "../../utils/loaderStyling";
 
 const PlaylistsList = () => {
     const dispatch = useDispatch();
     const savedPlaylists = useSelector((state) => state.Playlists.playlists);
     const [playlists, setPlaylists] = useState([]);
 
+    const { loadingNavigator } = useSelector((state) => state.Loading);
     const { displayCollectionsMode } = useSelector(
         (state) => state.DisplayMode
     );
@@ -32,7 +39,8 @@ const PlaylistsList = () => {
                 .then((data) => {
                     setPlaylists(data);
                     saveFetchedPlaylists(data);
-                });
+                })
+                .then(() => dispatch(setLoadingNavigatorFalse()));
         };
 
         const saveFetchedPlaylists = (data) => {
@@ -45,6 +53,7 @@ const PlaylistsList = () => {
         }
         if (savedPlaylists === null) {
             // console.log("Fetching playlists from db");
+            dispatch(setLoadingNavigatorTrue());
             fetchPlaylists();
         }
     }, [savedPlaylists, dispatch]);
@@ -77,7 +86,20 @@ const PlaylistsList = () => {
                             );
                         })
                     ) : (
-                        <p>No playlists to display</p>
+                        <>
+                            {loadingNavigator ? (
+                                <div className="loader_container">
+                                    <ClipLoader
+                                        color="#9f8d69"
+                                        css={loaderStyleNavigator}
+                                    />
+                                </div>
+                            ) : (
+                                <>
+                                    <p>No collections to display</p>
+                                </>
+                            )}
+                        </>
                     )}
                 </ul>
             </div>

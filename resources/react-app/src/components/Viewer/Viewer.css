@@ -7,4 +7,25 @@
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
 }
+
+.header-songlist-container .loader_container {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #181818;
+  border-top: 1px solid #9f8d69;
+  border-bottom: 1px solid #9f8d69;
+}
 /*# sourceMappingURL=Viewer.css.map */
