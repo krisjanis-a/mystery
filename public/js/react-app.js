@@ -2620,6 +2620,9 @@ var PlaylistsList = function PlaylistsList() {
       currentPlaylistId = _useSelector3.currentPlaylistId;
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_store_Loading_Loading_action__WEBPACK_IMPORTED_MODULE_6__.setLoadingNavigatorTrue)());
+  }, [dispatch]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (currentPlaylistId === null && playlists.length !== 0) {
       dispatch((0,_store_CurrentPlaylist_CurrentPlaylist_action__WEBPACK_IMPORTED_MODULE_3__.setCurrentPlaylistId)(playlists[0]["id"]));
     }
@@ -2888,6 +2891,11 @@ var SongList = function SongList() {
       displayCollectionsMode = _useSelector3.displayCollectionsMode,
       displayPlaylistsMode = _useSelector3.displayPlaylistsMode;
 
+  var _useSelector4 = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.Loading;
+  }),
+      loadingViewer = _useSelector4.loadingViewer;
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (displayPlaylistsMode) {
       if (Object.keys(currentPlaylist).length !== 0) {
@@ -2901,64 +2909,66 @@ var SongList = function SongList() {
       } else setSongs([]);
     }
   }, [currentPlaylist, currentCollection, displayPlaylistsMode, displayCollectionsMode]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     className: "song_list",
-    children: [songs.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(OptionsBar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "song_list_table_wrapper",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "song_list_table_container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
-          className: "song_list_table",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
-            className: "table_head",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "song_position",
-                children: "#"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "title",
-                children: "Title"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "album",
-                children: "Album"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "artist",
-                children: "Artist"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "date_added",
-                children: "Date Added"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "like_button"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "duration",
-                children: "Duration"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "options_button"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "remove_button"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
-                className: "drag_button"
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
-            className: "table_body",
-            children: songs.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-              children: songs.map(function (song, index) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Song_Song__WEBPACK_IMPORTED_MODULE_2__["default"], {
-                  song: song,
-                  index: index
-                }, song["song_spotify_data"]["id"]);
+    children: !loadingViewer && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+      children: [songs.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(OptionsBar, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "song_list_table_wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "song_list_table_container",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("table", {
+            className: "song_list_table",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("thead", {
+              className: "table_head",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "song_position",
+                  children: "#"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "title",
+                  children: "Title"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "album",
+                  children: "Album"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "artist",
+                  children: "Artist"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "date_added",
+                  children: "Date Added"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "like_button"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "duration",
+                  children: "Duration"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "options_button"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "remove_button"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("th", {
+                  className: "drag_button"
+                })]
               })
-            })
-          })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("tbody", {
+              className: "table_body",
+              children: songs.length !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                children: songs.map(function (song, index) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Song_Song__WEBPACK_IMPORTED_MODULE_2__["default"], {
+                    song: song,
+                    index: index
+                  }, song["song_spotify_data"]["id"]);
+                })
+              })
+            })]
+          })
         })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "songs_empty_alert",
-      children: songs.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-        children: "Nothing to display"
-      })
-    })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "songs_empty_alert",
+        children: songs.length === 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
+          children: "Nothing to display"
+        })
+      })]
+    })
   });
 };
 
@@ -4440,7 +4450,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".collections-list {\n  background-color: #0e1115;\n  height: 100%;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.collections-list ::-webkit-scrollbar {\n  width: 0.5rem;\n  /* Remove scrollbar space */\n  background: transparent;\n  /* Optional: just make scrollbar invisible */\n  padding-top: 4rem;\n}\n\n.collections-list ::-webkit-scrollbar-thumb {\n  background-color: #333333;\n  border-radius: 5px;\n}\n\n.collections-list ::-webkit-scrollbar-thumb:hover {\n  background-color: #424242;\n}\n\n.collections-list h3 {\n  color: #e5e5e5;\n}\n\n.collections-list ul {\n  padding: 0;\n  margin: 0;\n}\n\n.collections-list a {\n  text-decoration: none;\n  color: #bbbbbb;\n}\n\n.collections-list a:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-item {\n  list-style-type: none;\n  text-decoration: none;\n  color: #bbbbbb;\n  cursor: pointer;\n}\n\n.collections-list .list-item:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-items-container {\n  position: relative;\n  overflow-y: scroll;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\n\n.collections-list .list-items-container ul {\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".collections-list {\n  background-color: #0e1115;\n  height: 100%;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.collections-list ::-webkit-scrollbar {\n  width: 0.5rem;\n  /* Remove scrollbar space */\n  background: transparent;\n  /* Optional: just make scrollbar invisible */\n  padding-top: 4rem;\n}\n\n.collections-list ::-webkit-scrollbar-thumb {\n  background-color: #333333;\n  border-radius: 5px;\n}\n\n.collections-list ::-webkit-scrollbar-thumb:hover {\n  background-color: #424242;\n}\n\n.collections-list h3 {\n  color: #e5e5e5;\n}\n\n.collections-list ul {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.collections-list a {\n  text-decoration: none;\n  color: #bbbbbb;\n}\n\n.collections-list a:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-item {\n  list-style-type: none;\n  text-decoration: none;\n  color: #bbbbbb;\n  cursor: pointer;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n\n.collections-list .list-item:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.collections-list .list-items-container {\n  position: relative;\n  overflow-y: scroll;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\n\n.collections-list .list-items-container ul {\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4512,7 +4522,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".navigator {\n  display: flex;\n  height: 100%;\n}\n\n.navigator .change_mode_button {\n  margin: 1rem auto;\n}\n\n.list-items-container .loader_container {\n  width: 100%;\n  display: flex;\n  justify-content: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".navigator {\n  display: flex;\n  height: 100%;\n}\n\n.navigator .change_mode_button {\n  margin: 1rem auto;\n}\n\n.list-items-container .loader_container {\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4536,7 +4546,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".playlists-list {\n  background-color: #0e1115;\n  height: 100%;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.playlists-list ::-webkit-scrollbar {\n  width: 0.5rem;\n  /* Remove scrollbar space */\n  background: transparent;\n  /* Optional: just make scrollbar invisible */\n  padding-top: 4rem;\n}\n\n.playlists-list ::-webkit-scrollbar-thumb {\n  background-color: #333333;\n  border-radius: 5px;\n}\n\n.playlists-list ::-webkit-scrollbar-thumb:hover {\n  background-color: #424242;\n}\n\n.playlists-list h3 {\n  color: #e5e5e5;\n}\n\n.playlists-list ul {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n\n.playlists-list .list-item {\n  list-style-type: none;\n  text-decoration: none;\n  color: #bbbbbb;\n  cursor: pointer;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n\n.playlists-list .list-item:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.playlists-list .list-items-container {\n  position: relative;\n  overflow-y: scroll;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\n\n.playlists-list .list-items-container ul {\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".playlists-list {\n  background-color: #0e1115;\n  height: 100%;\n  overflow: hidden;\n  display: flex;\n  flex-direction: column;\n}\n\n.playlists-list ::-webkit-scrollbar {\n  width: 0.5rem;\n  /* Remove scrollbar space */\n  background: transparent;\n  /* Optional: just make scrollbar invisible */\n  padding-top: 4rem;\n}\n\n.playlists-list ::-webkit-scrollbar-thumb {\n  background-color: #333333;\n  border-radius: 5px;\n}\n\n.playlists-list ::-webkit-scrollbar-thumb:hover {\n  background-color: #424242;\n}\n\n.playlists-list h3 {\n  color: #e5e5e5;\n}\n\n.playlists-list ul {\n  width: 100%;\n  padding: 0;\n  margin: 0;\n}\n\n.playlists-list .list-item {\n  list-style-type: none;\n  text-decoration: none;\n  color: #bbbbbb;\n  cursor: pointer;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n}\n\n.playlists-list .list-item:hover {\n  text-shadow: 0px 0px 1px #e5e5e5;\n}\n\n.playlists-list .list-items-container {\n  position: relative;\n  overflow-y: scroll;\n  display: flex;\n  flex-direction: column;\n  flex: 1 1 auto;\n}\n\n.playlists-list .list-items-container ul {\n  position: absolute;\n  top: 0;\n  left: 0;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

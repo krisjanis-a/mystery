@@ -25,6 +25,10 @@ const PlaylistsList = () => {
     const { currentPlaylistId } = useSelector((state) => state.CurrentPlaylist);
 
     useEffect(() => {
+        dispatch(setLoadingNavigatorTrue());
+    }, [dispatch]);
+
+    useEffect(() => {
         if (currentPlaylistId === null && playlists.length !== 0) {
             dispatch(setCurrentPlaylistId(playlists[0]["id"]));
         }

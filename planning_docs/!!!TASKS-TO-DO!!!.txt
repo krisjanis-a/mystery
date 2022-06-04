@@ -1,0 +1,12 @@
+Main focus tasks (daily updated)
+
+-   Make loading collections fast
+-   Create filter feature
+-   Create drag & drop feature
+-   Fix column name length - add ellipsis
+-   Fix date added functionality breaking bug (formatDate & React)
+-   Add constraints & form verification for create collection feature
+-   Adjustable size interface
+-   Save collections app state to local storage - retain app state
+-   Remove X (delete song) from playlist if it is unedited
+-   Remove heart from playlist mode

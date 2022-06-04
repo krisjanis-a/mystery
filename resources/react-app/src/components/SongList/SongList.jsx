@@ -14,6 +14,8 @@ const SongList = () => {
         (state) => state.DisplayMode
     );
 
+    const { loadingViewer } = useSelector((state) => state.Loading);
+
     useEffect(() => {
         if (displayPlaylistsMode) {
             if (Object.keys(currentPlaylist).length !== 0) {
@@ -35,50 +37,56 @@ const SongList = () => {
 
     return (
         <div className="song_list">
-            {songs.length !== 0 && <OptionsBar />}
-            <div className="song_list_table_wrapper">
-                <div className="song_list_table_container">
-                    <table className="song_list_table">
-                        <thead className="table_head">
-                            <tr>
-                                <th className="song_position">#</th>
-                                <th className="title">Title</th>
-                                <th className="album">Album</th>
-                                <th className="artist">Artist</th>
-                                <th className="date_added">Date Added</th>
-                                <th className="like_button"></th>
-                                <th className="duration">Duration</th>
-                                <th className="options_button"></th>
-                                <th className="remove_button"></th>
-                                <th className="drag_button"></th>
-                            </tr>
-                        </thead>
+            {!loadingViewer && (
+                <>
+                    {songs.length !== 0 && <OptionsBar />}
+                    <div className="song_list_table_wrapper">
+                        <div className="song_list_table_container">
+                            <table className="song_list_table">
+                                <thead className="table_head">
+                                    <tr>
+                                        <th className="song_position">#</th>
+                                        <th className="title">Title</th>
+                                        <th className="album">Album</th>
+                                        <th className="artist">Artist</th>
+                                        <th className="date_added">
+                                            Date Added
+                                        </th>
+                                        <th className="like_button"></th>
+                                        <th className="duration">Duration</th>
+                                        <th className="options_button"></th>
+                                        <th className="remove_button"></th>
+                                        <th className="drag_button"></th>
+                                    </tr>
+                                </thead>
 
-                        <tbody className="table_body">
-                            {songs.length !== 0 && (
-                                <>
-                                    {songs.map((song, index) => {
-                                        return (
-                                            <Song
-                                                song={song}
-                                                index={index}
-                                                key={
-                                                    song["song_spotify_data"][
-                                                        "id"
-                                                    ]
-                                                }
-                                            />
-                                        );
-                                    })}
-                                </>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div className="songs_empty_alert">
-                {songs.length === 0 && <h3>Nothing to display</h3>}
-            </div>
+                                <tbody className="table_body">
+                                    {songs.length !== 0 && (
+                                        <>
+                                            {songs.map((song, index) => {
+                                                return (
+                                                    <Song
+                                                        song={song}
+                                                        index={index}
+                                                        key={
+                                                            song[
+                                                                "song_spotify_data"
+                                                            ]["id"]
+                                                        }
+                                                    />
+                                                );
+                                            })}
+                                        </>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div className="songs_empty_alert">
+                        {songs.length === 0 && <h3>Nothing to display</h3>}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
