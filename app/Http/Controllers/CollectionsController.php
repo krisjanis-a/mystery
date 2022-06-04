@@ -75,10 +75,6 @@ class CollectionsController extends Controller
     // Get collection data
     public function fetchCollection($id)
     {
-
-        $timeStart = microtime(true);
-
-
         $collection = Collection::where("collection_id", $id)->get();
         $creator = User::where("id", $collection[0]->creator_id)->get();
         $songIds = CollectionSong::select("song_id")
@@ -126,16 +122,12 @@ class CollectionsController extends Controller
                 $currentTrackCount++;
             }
 
-            // error_log($songEntry["name"].", current track count: ".$currentTrackCount.", index: ".$currentTrackIndex);
-            
             // TODO this could moved in previous if later
             // If 50 songs reached / all songs added and query is ready - fetch data from spotify API 
             if($currentTrackCount === 50 || $currentTrackIndex === $songsLength - 1 || $currentTrackCount === $songsLength){
-                // error_log("query string: ".$querySongIDs);
                 $spotifyDataBatch = $spotifyAPI->getTracks($querySongIDs)->tracks;
 
                 foreach($spotifyDataBatch as $spotifyDataBatchEntry){
-                    // error_log("Pushing batch to main array");
                     array_push($allSongsSpotifyData, $spotifyDataBatchEntry);
                 }
                 
@@ -148,61 +140,20 @@ class CollectionsController extends Controller
             $currentTrackIndex++;
         }
 
-        // return dd($allSongsSpotifyData);
-
         // Using References (with the & symbol) to modify each entry
         foreach ($songs as &$songEntry) {
-            // error_log($songEntry["name"]);
-            // $timeStart = microtime(true);
-            
             foreach($allSongsSpotifyData as $allSongsSpotifyDataEntry){
-                // return dd($allSongsSpotifyDataEntry);
-                // $timeStart = microtime(true);
-
                 if($allSongsSpotifyDataEntry->id === $songEntry["spotify_id"]){
                     $songSpotifyData = $allSongsSpotifyDataEntry;
                     $songEntry["song_spotify_data"] = $songSpotifyData;
                 }
-
-                // $timeEnd = microtime(true);
-                // $executionTime = ($timeEnd - $timeStart);
-                // error_log("Id 1: ".$allSongsSpotifyDataEntry->id.", Id 2: ".$songEntry["spotify_id"]);
-                // error_log("Execution time: ".$executionTime.", matched = ".($allSongsSpotifyDataEntry->id === $songEntry["spotify_id"] ? "Yes" : "No"));
             }
-            
 
-            // $timeEnd = microtime(true);
-            // $executionTime = ($timeEnd - $timeStart);
-
-            // error_log("Execution time: ".$executionTime);
         }
-
-        // !The old way of fetching song's spotify data - very slow
-        // foreach ($songs as &$songEntry) {
-        //     error_log($songEntry["name"]);
-        //     $timeStart = microtime(true);
-
-        //     $songSpotifyData = $spotifyAPI->getTrack(
-        //         $songEntry["spotify_id"]
-        //     );
-        //     $songEntry["song_spotify_data"] = $songSpotifyData;
-
-        //     $timeEnd = microtime(true);
-        //     $executionTime = ($timeEnd - $timeStart);
-
-        //     error_log("Execution time: ".$executionTime);
-        // }
-
-        // $response = new stdClass();
 
         $response = $collection[0];
         $response->creator_username = $creator[0]->username;
         $response->songs = $songs;
-
-        // $timeEnd = microtime(true);
-        // $executionTime = ($timeEnd - $timeStart);
-
-        // error_log("Execution time: ".$executionTime);
 
         return $response;
     }

@@ -1,6 +1,6 @@
 Main focus tasks (daily updated)
 
--   Make loading collections fast
+-   Make loading collections content fast - DONE
 -   Create filter feature
 -   Create drag & drop feature
 -   Fix column name length - add ellipsis
